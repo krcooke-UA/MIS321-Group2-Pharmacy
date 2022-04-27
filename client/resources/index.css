@@ -1,4 +1,45 @@
 .myNav-bg-red {
 	background: #990000;
+	position: fixed;
+    height: 75px;
+	width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
 }
 
+
+.nav-item {
+    background-color: #990000;
+    overflow: hidden;
+}
+
+.navitem a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navitem a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.navitem a.active {
+  color: white;
+}
+
+.navitem-right {
+	position: relative;
+	float: right;
+  }
+
+#pharmLogo{
+    position: absolute;
+	height: 60px;
+	width: 60px;
+	top: 7.5px; left: 10px;
+}

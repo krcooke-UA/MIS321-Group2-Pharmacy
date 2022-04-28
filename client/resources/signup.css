@@ -135,3 +135,15 @@ input::-moz-focus-inner {
 #submit:active {
   color: #d0d0d2;
 }
+
+#home {
+    color: #c2c2c5;
+    margin-top: 10px;
+    transition: color 300ms;
+  }
+#home:focus {
+    color: #000000;
+}
+#home:active {
+    color: #d0d0d2;
+}

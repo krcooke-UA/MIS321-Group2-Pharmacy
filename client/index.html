@@ -8,35 +8,139 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link href="css/bootstrap-4.4.1.css" rel="stylesheet">
     <link href = "./resources/index.css" rel="stylesheet">
+    <link href = "./scripts/index.js" rel="stylesheet">
 </head>
  
 <body>
 	 <nav class="navbar navbar-expand-lg navbar-dark bg-red myNav-bg-red">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <img id="pharmLogo" src="./resources/images/pharmlogo.png">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">&nbsp;</span></a>
+          <li class="navitem">
+            <a class="nav-link" aria-current="page" href="#logo">  ...........      <span class="sr-only">&nbsp;</span></a>
           </li>
+          <li class="navitem">
+            <a class="active"  href="#Home">Home</a>
+          </li>
+          <li class="navitem">
+            <a class="nav-link" href="#Appointments">Appointments</a>
+          </li>
+          <li class="navitem">
+            <a class="nav-link" href="#DrugInfo">Drug Information</a>
+          </li>
+          <li class="navitem">
+            <a class="nav-link" href="#VaccineInfo">Vaccine Information</a>
+          </li>
+
+<!-- 
+          <div class="navitem-right">
+            <li class="nav-item">
+            <a class="nav-link" href="#Login">Login</a>
+            <a class ="nav-link" a href="demo.html">Login</a>
+
+          </li>
+            
           <li class="nav-item">
-            <a class="nav-link" href="#">Appointments&nbsp;</a>
+            <a class="nav-link" href="signup.html">Sign Up</a>
           </li>
-       
+        </div> -->
+          
+
         </ul>
         <form class="form-inline my-2 my-lg-0">
         </form>
+          </div>
+          <div class="navitem-right">
+            <li class="navitem">
+              <a class="nav-link" href="demo.html">Login</a>
+              <a class="nav-link" href="signup.html">Sign Up</a>
+            </li>
+          </div>
+
+</nav>
+
+<footer>
+  <article class="footer_column">
+    <h3>Schedule an Appointment</h3>
+    <img src="./resources/images/Appointment.jpg" alt="" width="400" height="200" class="cards"/>
+    <p>The following application will allow you to view available appointments. Once signed into an account, the exstining user has the ability to select from available dates and mention the purpose for their consultation.</p>
+  </article>
+  <article class="footer_column">
+    <h3>Common Drug Information</h3>
+    <img src="./resources/images/pillbottles.png" alt="" width="400" height="200" class="cards"/>
+    <p>A medication is a drug used to diagnose, cure, treat, or prevent disease. Drug therapy is an important part of the medical field and relies on the science of pharmacology for continual advancement and on pharmacy for appropriate management.</p>
+  </article>
+  <article class="footer_column">
+    <h3>Common Vaccine Information</h3>
+    <img src="./resources/images/vaccineimg.png" alt="" width="400" height="200" class="cards"/>
+    <p>A vaccine is a biological preparation that provides active acquired immunity to a particular infectious disease. A vaccine typically contains an agent that resembles a disease-causing microorganism and is often made from weakened or killed forms of the microbe, its toxins, or one of its surface proteins. </p>
+  </article>
+</footer>
+
+<section>
+  
+  <article class="left_article">
+    <h3>About Tide Pharmaceuticals</h3>
+    <p>Tide Pharmaceuticals is the leading health solutions company in the Tuscaloosa area. We deliver care like no one else can. We help people navigate the health care system and provide simple and easy health care solutions. </p>
+    <p>Founded in Tuscaloosa, in 2010 a proffessor and a couple of his students sat in Hewson Hall and devolped the simple, yet eligent idea of creating Tide Pharmaceuticals. Right off the bat, it was a smash hit with not only the students, but also the entire Tuscaloosa</p>
+  </article>
+  <aside class="right_article"><img src="./resources/images/pharmlogo.png" alt="" width="300" height="300" class="placeholder"/> </aside>
+</section>
+<div class="row">
+  <div class="aboutuscolumns">
+    <p class="thumbnail_align"> <img src="./resources/images/jeff-modified.png" alt="" width="200" height="200" class="thumbnail"/> </p>
+    <h4 class="thumbnail_align">Jeff Lucas</h4>
+    <p>Roughly 12 years ago, in 2010 Jeff Lucas created Tide Pharmaceuticals with the help of three of his students. Since then, Jeff has become the lead pharmacist after getting his ph d at the University of Alabama.</p>
+  </div>
+  <div class="aboutuscolumns">
+    <p class="thumbnail_align"> <img src="./resources/images/kat-modified.png" alt="" width="200" height="200" class="thumbnail"/> </p>
+    <h4  class="thumbnail_align" >Kaitlin Cooke</h4>
+    <p>Kaitlin is the lead pharmacist. She got her ph d at the Univeristy of Alabama with an emphasis on metabolism and biostatistics, infectious disease, human pharmacology, and therapeutics</p>
+  </div>
+  <div class="aboutuscolumns">
+    <p class="thumbnail_align"> <img src="./resources/images/jakefrench-modified.png" alt="" width="200" height="200" class="thumbnail"/> </p>
+    <h4  class="thumbnail_align" >Jake French</h4>
+    <p>Jakob is interning under Kaitlin and is currently pursueing his ph d in medicine at the Univeristy of Chicago.</p>
+  </div>
+  <div class="aboutuscolumns">
+    <p class="thumbnail_align"> <img src="./resources/images/hannah-modified.png" alt="" width="200" height="200" class="thumbnail"/> </p>
+    <h4  class="thumbnail_align" >Hannah Wells</h4>
+    <p>Hannah is the lead technition and is considered the glue of the bunch by many of her co-workers. She graduated top of her class at the University of Alabama with a pharmaceutical science and administration degree.</p>
+  </div>
+</div>
+<<<<<<< HEAD
+=======
+	<section>
+      <div class="jumbotron text-center mt-2">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+<<<<<<< HEAD
+              <h1>WELCOME!</h1>
+				<hr>
+
+                <p>TIDE Pharmaceuticals is a pharmaceutical startup specializing in providing transformative pharmaceuticals and vaccines to customers in the Tuscaloosa area. Please schedule an appointment today!&nbsp; &nbsp;&nbsp;</p>
+              <hr>
+				
+              <!-- <p><a class="btn btn-dark btn-lg" href="#" role="button">SIGN UP or SIGN IN »</a></p> -->
+=======
+              
+>>>>>>> 6c0024abc4faf4fe13c7cb8053ca47645f6c448c
+			  <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23D50000&ctz=America%2FChicago&src=Y19vYWF2cHFza2MzY2JmNnBlZnBnc2UxZjdja0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23F09300" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+</div>
+          </div>
+        </div>
       </div>
-    </nav>
+    </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src = "./scripts/index.js" type="text/JavaScript"></script>
 	 <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap-4.4.1.js"></script>
 	
-</body>
-	
-	
+>>>>>>> 2ccf3d86189cf04b4a31529ac520f531de4c165e
+  </body>
 </html>

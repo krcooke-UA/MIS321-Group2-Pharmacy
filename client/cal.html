@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calendar</title>
-    <link rel="stylesheet" href="cal.css" />
+    <link rel="stylesheet" href="./resources/cal.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
@@ -14,7 +14,7 @@
       rel="stylesheet"
     />
   </head>
-  <body>
+  <body onload="OnLoad()">
     <div class="container">
       <div class="calendar">
         <div class="month">
@@ -34,12 +34,11 @@
           <div>Fri</div>
           <div>Sat</div>
         </div>
-        <div class="days"></div>
-      
-      <div class="time"></div>
+        <div class="days" ></div>
       </div>
+      <div id="box"></div>
     </div>
 
-    <script src="cal.js"></script>
+    <script src="./scripts/cal.js"></script>
   </body>
 </html>

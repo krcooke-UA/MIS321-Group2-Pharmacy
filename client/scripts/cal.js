@@ -1,6 +1,11 @@
 const date = new Date();
 
 const renderCalendar = () => {
+  var trueMonth = date.getMonth() + 1;
+  var currentDay = new Date().getDate();
+  var currentMonth = new Date().getMonth();
+  var currentYear = new Date().getYear();
+
   date.setDate(1);
 
   const monthDays = document.querySelector(".days");
@@ -49,24 +54,35 @@ const renderCalendar = () => {
   let days = "";
 
   for (let x = firstDayIndex; x > 0; x--) {
-    days += `<div class="prev-date">${prevLastDay - x + 1}</div>`;
+    days += `<div class="prev-month">${prevLastDay - x + 1}</div>`;
   }
 
   for (let i = 1; i <= lastDay; i++) {
+    mm = date.getMonth() + 1;
+    dd = i
+    yyyy = date.getFullYear();
+    if (dd < 10) dd = '0' + dd;
+    if (mm < 10) mm = '0' + mm;
+    var selectedDate = yyyy + "-" + mm + "-" + dd
     if (
-      i === new Date().getDate() &&
-      date.getMonth() === new Date().getMonth()
+      (date.getMonth() < currentMonth && date.getYear() == currentYear) ||
+      (i < currentDay && date.getMonth() === currentMonth)
     ) {
-      days += `<div class="today">${i}</div>`;
+      days += `<div class="prev-date">${i}</div>`;
+    } else if (
+      i === currentDay &&
+      date.getMonth() === currentMonth
+    ) {
+      days += `<div class="today" id=${selectedDate} name=${selectedDate} onClick="selectDate(event)">${i}</div>`;
     } else {
-      days += `<div>${i}</div>`;
+      days += `<div id=${selectedDate} name=${selectedDate} onClick="selectDate(event)">${i}</div>`;
     }
   }
 
   for (let j = 1; j <= nextDays; j++) {
-    days += `<div class="next-date">${j}</div>`;
-    monthDays.innerHTML = days;
+    days += `<div class="next-month">${j}</div>`;
   }
+  monthDays.innerHTML = days;
 };
 
 document.querySelector(".prev").addEventListener("click", () => {
@@ -79,4 +95,17 @@ document.querySelector(".next").addEventListener("click", () => {
   renderCalendar();
 });
 
-renderCalendar();
+function OnLoad() {
+  date.setMonth(date.getMonth());
+  renderCalendar();
+}
+
+function selectDate(e) {
+  var element = e.target || e.srcElement;
+  console.log(element.id);
+  showTimes(element.id);
+}
+function showTimes(selectedDate) {
+  let html = `<div class="box"></div>`;
+  document.getElementById("box").innerHTML = html;
+}

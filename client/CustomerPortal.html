@@ -15,17 +15,18 @@
 			<div class="bg-white shadow rounded-lg d-block d-sm-flex">
 				<div class="profile-tab-nav border-right">
 					<div class="p-4">
-						<h4 class="text-center">Name Here</h4>
+						<class="thumbnail_align"> <img src="C:\Users\hanna\OneDrive\Desktop\GroupProj321\MIS321-Group2-Pharmacy\client\resources\images\pharmlogo.png" alt="" width="200" height="200" class="thumbnail"/> </p>
+						
 					</div>
 					<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 						<a class="nav-link active" id="account-tab" data-toggle="pill" href="#account" role="tab" aria-controls="account" aria-selected="true">
 							<i class="fa fa-home text-center mr-1"></i> 
 							Account
 						</a>
-						<a class="nav-link" id="password-tab" data-toggle="pill" href="#password" role="tab" aria-controls="password" aria-selected="false">
+						<!-- <a class="nav-link" id="password-tab" data-toggle="pill" href="#password" role="tab" aria-controls="password" aria-selected="false">
 							<i class="fa fa-key text-center mr-1"></i> 
 							Password
-						</a>
+						</a> -->
 						<a class="nav-link" id="security-tab" data-toggle="pill" href="#security" role="tab" aria-controls="security" aria-selected="false">
 							<i class="fa fa-user text-center mr-1"></i> 
 							See Upcoming Appointments
@@ -60,6 +61,50 @@
 								  	<input type="text" class="form-control" value="Cell Number">
 								</div>
 							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+								  	<label>Gender</label>
+								  	<input type="text" class="form-control" value="Gender">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+								  	<label>Social Security Number</label>
+								  	<input type="text" class="form-control" value="SSN">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+								  	<label>Date of Birth</label>
+								  	<input type="text" class="form-control" value="DOB">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+								  	<label>Street</label>
+								  	<input type="text" class="form-control" value="Street">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+								  	<label>City</label>
+								  	<input type="text" class="form-control" value="City">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+								  	<label>State</label>
+								  	<input type="text" class="form-control" value="State">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+								  	<label>Zip Code</label>
+								  	<input type="text" class="form-control" value="Zip Code">
+								</div>
+							</div>
+							
+							
 						</div>
 						<div>
 							<button class="btn btn-primary">Update</button>
@@ -96,15 +141,34 @@
 						</div>
 					</div>
 					<div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
-						<h3 class="mb-4">Security Settings</h3>
+						<h3 class="mb-4">SCHEDULED APPOINTMENTS</h3>
 						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-								  	<label>Login</label>
+							
+							<table>
+								<tr>
+								  <th>DATE</th>
+								  <th>APPOINTMENT TYPE</th>
+								  <th>ADMIN</th>
+								</tr>
+								<tr>
+								  <td>Emil</td>
+								  <td>Tobias</td>
+								  <td>Linus</td>
+								</tr>
+								<tr>
+								  <td>16</td>
+								  <td>14</td>
+								  <td>10</td>
+								</tr>
+							  </table>
+
+							<!-- <div class="col-md-6"> -->
+								<!-- <div class="form-group">
+								  	<label>Upcoming Appointments</label>
 								  	<input type="text" class="form-control">
-								</div>
-							</div>
-							<div class="col-md-6">
+								</div> -->
+							<!-- </div> -->
+							<!-- <div class="col-md-6">
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
@@ -115,12 +179,12 @@
 										</label>
 									</div>
 								</div>
-							</div>
-						</div>
-						<div>
+							</div> -->
+						<!-- </div> -->
+						<!-- <div>
 							<button class="btn btn-primary">Update</button>
 							<button class="btn btn-light">Cancel</button>
-						</div>
+						</div> -->
 					</div>
 					<div class="tab-pane fade" id="application" role="tabpanel" aria-labelledby="application-tab">
 						<h3 class="mb-4">Application Settings</h3>

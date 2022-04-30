@@ -36,7 +36,7 @@ body {
 }
 .container {
   display: flex;
-  height: 320px;
+  height: 500px;
   margin: 0 auto;
   width: 640px;
 }
@@ -47,6 +47,12 @@ body {
     width: 320px;
   }
 }
+
+.nav-item {
+  background-color: #990000;
+  overflow: hidden;
+}
+
 .left {
   background: white;
   height: calc(100% - 40px);
@@ -88,6 +94,12 @@ body {
     max-height: 400px;
   }
 }
+
+img {
+	border-radius: 8px;
+  padding-left: 3.5em;
+}
+
 svg {
   position: absolute;
   width: 320px;
@@ -136,14 +148,3 @@ input::-moz-focus-inner {
   color: #d0d0d2;
 }
 
-#home {
-    color: #c2c2c5;
-    margin-top: 10px;
-    transition: color 300ms;
-  }
-#home:focus {
-    color: #000000;
-}
-#home:active {
-    color: #d0d0d2;
-}

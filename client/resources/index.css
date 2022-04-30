@@ -48,36 +48,47 @@ footer {
 	padding-top: 100px;
 	background-color: #FFFFFF;
 	padding-bottom: 35px;
+	border: 4px;
 }
+.center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+  }
 
 .footer_column {
 	width: 33%;
 	text-align: center;
 	padding-top: 30px;
 	float: left;
+	padding-right: 1em;
+	padding-left: 1em;
 }
 footer .footer_column h3 {
-	color: #B3B3B3;
+	color: #000000;
 	text-align: center;
+	border: 4px;
 }
 footer .footer_column p {
 	color: #9B4C4E;
 	background-color: #FFFFFF;
 }
 .cards {
-	width: 100%;
-	height: auto;
+	width: 90%;
+	height: 90;
 	max-width: 400px;
 	max-height: 200px;
+	border: 4px;
 }
 footer .footer_column p {
 	padding-left: 30px;
 	padding-right: 30px;
-	text-align: justify;
+	text-align: start;
 	line-height: 25px;
 	font-weight: lighter;
-	margin-left: 20px;
-	margin-right: 20px;
+	margin-left: 0px;
+
 }
 .noDisplay {
 	display: none;
@@ -85,6 +96,7 @@ footer .footer_column p {
 .aboutuscolumns {
 	width: 25%;
 	float: left;
+	text-align: center;
 	font-family: "Source Sans Pro";
 	color: #A5A5A5;
 	line-height: 24px;
@@ -114,6 +126,7 @@ footer .footer_column p {
 	display: block;
 }
 .row .aboutuscolumns p {
+	text-align: center;
 	padding-left: 10%;
 	padding-right: 10%;
 }
@@ -122,6 +135,8 @@ footer .footer_column p {
 	color: #01B2D1;
 }
 .left_article {
+	padding-left: 2.5em;
+	text-align: left;
 	width: 60%;
 	float: left;
 	font-family: "Source Sans Pro";
@@ -155,6 +170,9 @@ footer .footer_column p {
 	float: left;
 	background-color:white;
 }
+img {
+	border-radius: 8px;
+  }
 .container .right_article ul {
 	margin-top: 0px;
 	margin-right: 0px;
@@ -191,6 +209,7 @@ footer .footer_column p {
 	text-align: center;
 }
 .right_article {
+	padding-right: 2.5em;
 	height: auto;
 	padding-bottom: 33px;
 }
@@ -276,3 +295,9 @@ html {
 	cursor: pointer;
 	outline: none;
   }
+
+  hr.rounded {
+	border-top: 8px solid #9e1b32;
+	border-radius: 5px;
+  }
+

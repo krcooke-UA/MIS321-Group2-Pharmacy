@@ -31,8 +31,8 @@ namespace api.Database
                 User temp = new User()
                 {
                     Id = item.user_id,
-                    Username = item.username,
-                    Password = item.h_password
+                    Email = item.user_email,
+                    Password = item.user_password
                 };
 
                 myUser.Add(temp);
@@ -55,8 +55,8 @@ namespace api.Database
                 User temp = new User()
                 {
                     Id = item.user_id,
-                    Username = item.username,
-                    Password = item.h_password
+                    Email = item.user_email,
+                    Password = item.user_password
                 };
 
                 myUser.Add(temp);
@@ -64,11 +64,11 @@ namespace api.Database
             db.Close();
             return myUser;
         }
-        public List<User> SelectOneByUsername(string username)
+        public List<User> SelectOneByUsername(string email)
         {
             List<User> myUser = new List<User>();
 
-            string stm = @"SELECT * from users WHERE username = '" + username + "' LIMIT 1";
+            string stm = @"SELECT * from users WHERE user_email = '" + email + "' LIMIT 1";
             db.Open();
             List<ExpandoObject> results = db.Select(stm);
 
@@ -78,8 +78,8 @@ namespace api.Database
                 User temp = new User()
                 {
                     Id = item.user_id,
-                    Username = item.username,
-                    Password = item.h_password
+                    Email = item.user_email,
+                    Password = item.user_password
                 };
 
                 myUser.Add(temp);
@@ -104,8 +104,8 @@ namespace api.Database
 
             var values = GetValues(User);
 
-            string stm = @"INSERT INTO users(username, password)
-             VALUES(@username, @password)";
+            string stm = @"INSERT INTO users(user_email, user_password)
+             VALUES(@user_email, @user_password)";
 
             db.Open();
             db.Insert(stm, values);
@@ -119,8 +119,8 @@ namespace api.Database
             var values = GetValues(User);
 
             string stm = @"UPDATE users SET
-            username = @username,
-            h_password = @password
+            user_email = @user_email,
+            user_password = @user_password
             WHERE user_id = @user_id";
 
             db.Open();
@@ -134,8 +134,8 @@ namespace api.Database
         {
             var values = new Dictionary<string, object>(){
                 {"@user_id", User.Id},
-                {"@password", User.Password},
-                {"@username", User.Username},
+                {"@user_password", User.Password},
+                {"@user_email", User.Email},
                 
             };
 

@@ -7,7 +7,7 @@ namespace api.Interfaces
     {
         List<User> Select();
          List<User> SelectOneById(int id);
-         List<User> SelectOneByUsername(string username);
+         List<User> SelectOneByUsername(string email);
          void Delete(int id);
          void Insert(User User);
          void Update(User User);

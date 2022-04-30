@@ -22,7 +22,7 @@ namespace api.Database
 
         public Login LoginUser(User thisUser)
         {
-            if(thisUser.Username == null || thisUser.Password == null) {
+            if(thisUser.Email == null || thisUser.Password == null) {
                 return new Login() {
                     Response = 400,
                     Message = "Null stuff"
@@ -30,7 +30,7 @@ namespace api.Database
             }
             User foundUser;
             try {
-                foundUser = dataHandler.SelectOneByUsername(thisUser.Username)[0];
+                foundUser = dataHandler.SelectOneByUsername(thisUser.Email)[0];
             }
             catch {
                 return new Login() {
@@ -45,7 +45,7 @@ namespace api.Database
                 return new Login() {
                     Response = 200,
                     Message = "User is valid",
-                    Username = thisUser.Username,
+                    Email = thisUser.Email,
                     AuthToken = new AuthToken(thisGuid)
                 };
             }
@@ -83,7 +83,7 @@ namespace api.Database
         public Register RegisterUser(User newUser)
         {
             try{
-                List<User> userList = dataHandler.SelectOneByUsername(newUser.Username);
+                List<User> userList = dataHandler.SelectOneByUsername(newUser.Email);
                 if(userList.Count > 0) {
                     return new Register() {
                         Response = 400,
@@ -108,8 +108,8 @@ namespace api.Database
             }
             return new Register() {
                 Response = 200,
-                Message = $"User {newUser.Username} created",
-                Username = newUser.Username,
+                Message = $"User {newUser.Email} created",
+                Email = newUser.Email,
             };
         }
 

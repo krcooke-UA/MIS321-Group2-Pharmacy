@@ -23,15 +23,15 @@ namespace api.Database
         public Database()
         {
             //go to edit system enviroment variables on specific machine
-            string server = "ckshdphy86qnz0bj.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
+            string server = "qao3ibsa7hhgecbv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
 
-            string name = "l469ad0eny4xmmgn";
+            string name = "u1z1fvkbnaae5ird";
 
             string port = "3306";
 
-            string userName = "chsurg3v3ix4d2pm";
+            string userName = "kep1psu5j8uzo01g";
 
-            string password = "zphz30wau6h6yjmi";
+            string password = "g05w7qk7ct1y4jhw";
 
             System.Console.WriteLine("got the database " + server);
 

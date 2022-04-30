@@ -4,6 +4,6 @@ namespace api.Models
     {
         public int Response {get;set;}
         public string Message { get; set;}
-        public string Username { get;set;}
+        public string Email { get;set;}
     }
 }

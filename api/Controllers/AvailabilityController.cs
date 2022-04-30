@@ -13,9 +13,9 @@ namespace api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AppointmentController : ControllerBase
+    public class AvailabilityController : ControllerBase
     {
-        // GET: api/Appointment
+        // GET: api/Availability
         [EnableCors("OpenPolicy")]
         [HttpGet()]
         public IEnumerable<string> Get()
@@ -23,29 +23,29 @@ namespace api.Controllers
             return new string[] { "value1", "value2" };
         }
 
-        // GET: api/Appointment/5
+        // GET: api/Availability/5
         [EnableCors("OpenPolicy")]
-        [HttpGet("{id}", Name = "GetAppointments")]
+        [HttpGet("{id}", Name = "GetAvailability")]
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST: api/Appointment
+        // POST: api/Availability
         [EnableCors("OpenPolicy")]
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT: api/Appointment/5
+        // PUT: api/Availability/5
         [EnableCors("OpenPolicy")]
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE: api/Appointment/5
+        // DELETE: api/Availability/5
         [EnableCors("OpenPolicy")]
         [HttpDelete("{id}")]
         public void Delete(int id)

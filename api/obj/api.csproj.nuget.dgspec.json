@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hanna\\OneDrive\\Desktop\\GroupProj321\\mis321-group2-Pharmacy\\api\\api.csproj": {}
+    "C:\\source\\12057969\\MIS321\\MIS321-Group2-Pharmacy\\api\\api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hanna\\OneDrive\\Desktop\\GroupProj321\\mis321-group2-Pharmacy\\api\\api.csproj": {
+    "C:\\source\\12057969\\MIS321\\MIS321-Group2-Pharmacy\\api\\api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hanna\\OneDrive\\Desktop\\GroupProj321\\mis321-group2-Pharmacy\\api\\api.csproj",
+        "projectUniqueName": "C:\\source\\12057969\\MIS321\\MIS321-Group2-Pharmacy\\api\\api.csproj",
         "projectName": "api",
-        "projectPath": "C:\\Users\\hanna\\OneDrive\\Desktop\\GroupProj321\\mis321-group2-Pharmacy\\api\\api.csproj",
-        "packagesPath": "C:\\Users\\hanna\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hanna\\OneDrive\\Desktop\\GroupProj321\\mis321-group2-Pharmacy\\api\\obj\\",
+        "projectPath": "C:\\source\\12057969\\MIS321\\MIS321-Group2-Pharmacy\\api\\api.csproj",
+        "packagesPath": "C:\\Users\\kaitl\\.nuget\\packages\\",
+        "outputPath": "C:\\source\\12057969\\MIS321\\MIS321-Group2-Pharmacy\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\hanna\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\kaitl\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -38,6 +38,18 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Cors": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.0.28, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
@@ -61,7 +73,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -106,6 +106,10 @@ function selectDate(e) {
   showTimes(element.id);
 }
 function showTimes(selectedDate) {
-  let html = `<div class="box"></div>`;
+  let html = `<div class="box">`
+  html += `<div class="times">`
+  html += `<div class="currentDate">`
+  html += `<h1>Appointment Times<p>${selectedDate}`
+  html += `</p></h1></div></div></div>`;
   document.getElementById("box").innerHTML = html;
 }

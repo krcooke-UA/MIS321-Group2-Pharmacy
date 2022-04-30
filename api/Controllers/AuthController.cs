@@ -20,7 +20,7 @@ namespace api.Controllers
 
         // POST: api/User
         [EnableCors("BasicPolicy")]
-        [HttpPost("resister")]
+        [HttpPost("register")]
         public Register RegisterAuth ([FromBody] User newUser)
         {
             return dataHandler.RegisterUser(newUser);

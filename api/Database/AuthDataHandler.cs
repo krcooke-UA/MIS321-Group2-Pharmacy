@@ -95,6 +95,7 @@ namespace api.Database
                 Console.WriteLine("User DNE");
             }
             string hashedPassword = HashPassword(newUser.Password);
+            Console.WriteLine(hashedPassword);
             newUser.Password = hashedPassword;
 
             try{

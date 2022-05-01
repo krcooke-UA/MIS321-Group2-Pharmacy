@@ -18,9 +18,9 @@ namespace api.Controllers
         //The main Data handler for user. Change to a different class file if different db.
         IAuthDataHandler dataHandler = new AuthDataHandler();  
 
-        // POST: api/User
+        // POST: api/Auth/Register
         [EnableCors("OpenPolicy")]
-        [HttpPost("register")]
+        [HttpPost("Register")]
         public Register RegisterAuth ([FromBody] User newUser)
         {
             return dataHandler.RegisterUser(newUser);
@@ -28,7 +28,7 @@ namespace api.Controllers
 
         // PUT: api/User/5
         [EnableCors("OpenPolicy")]
-        [HttpPost("login")]
+        [HttpPost("Login")]
         public Login LoginAuth([FromBody] User newUser)
         {
             dataHandler.RemoveExpiredToken();
@@ -36,14 +36,14 @@ namespace api.Controllers
         }
 
         [EnableCors("OpenPolicy")]
-        [HttpPost("logout")]
+        [HttpPost("Logout")]
         public Login LogoutAuth([FromBody] AuthToken token)
         {
             return dataHandler.LogoutUser(token);
         }
 
         [EnableCors("OpenPolicy")]
-        [HttpPost("validate-token")]
+        [HttpPost("Validate-token")]
         public bool ValidateToken([FromBody] AuthToken token)
         {
             return dataHandler.IsTokenValid(token);

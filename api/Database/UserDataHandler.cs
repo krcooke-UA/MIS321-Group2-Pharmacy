@@ -104,8 +104,8 @@ namespace api.Database
 
             var values = GetValues(User);
 
-            string stm = @"INSERT INTO users(user_email, user_password)
-             VALUES(@user_email, @user_password)";
+            string stm = @"INSERT INTO users(user_fname, user_lname, user_email, user_password, user_type_id)
+                VALUES(@user_fname, @user_lname, @user_email, @user_password, 2)";
 
             db.Open();
             db.Insert(stm, values);
@@ -133,7 +133,8 @@ namespace api.Database
         public Dictionary<string, object> GetValues(User User)
         {
             var values = new Dictionary<string, object>(){
-                {"@user_id", User.Id},
+                {"@user_fname", User.Fname},
+                {"@user_lname", User.Lname},
                 {"@user_password", User.Password},
                 {"@user_email", User.Email},
                 

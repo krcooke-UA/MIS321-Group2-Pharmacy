@@ -205,6 +205,12 @@ img {
 	background-color: #717070;
 	cursor: pointer;
 }
+.thumbnail {
+	width: 100px;
+	border-radius: 200px;
+	height: 100px;
+	margin-left: auto;
+}
 .thumbnail_align {
 	text-align: center;
 }

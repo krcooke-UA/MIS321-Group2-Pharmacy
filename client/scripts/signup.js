@@ -28,7 +28,7 @@ function handleSignup() {
         localStorage.setItem("TidePharmacy-User", JSON.stringify(json.id));
         localStorage.setItem("TidePharmacy-Token", JSON.stringify(json.authToken));
         localStorage.setItem("TidePharmacy-Type", JSON.stringify(json.type))
-        window.location.href = "index.html";
+        window.location.href = "home.html";
     }).catch(error => {
         console.log(error);
     });

@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace api
 {
@@ -26,11 +27,22 @@ namespace api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddCors(options =>
+            {
+                options.AddPolicy("OpenPolicy",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                    });
+            });
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "api", Version = "v1" });
+                c.CustomSchemaIds(x => x.FullName);
+                c.ResolveConflictingActions (apiDescriptions => apiDescriptions.First ());
             });
         }
 
@@ -47,6 +59,10 @@ namespace api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

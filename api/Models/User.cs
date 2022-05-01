@@ -16,6 +16,6 @@ namespace api.Models
         public string SSN { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public int Type_id { get; set; } 
+        public string Type_Text { get; set; }
     }
 }

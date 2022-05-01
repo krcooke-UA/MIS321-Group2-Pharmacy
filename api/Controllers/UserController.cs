@@ -19,7 +19,7 @@ namespace api.Controllers
         IUserDataHandler dataHandler = new UserDataHandler();  
 
         // GET: api/User
-        [EnableCors("BasicPolicy")]
+        [EnableCors("OpenPolicy")]
         [HttpGet]
         public List<User> Get()
         {
@@ -27,7 +27,7 @@ namespace api.Controllers
         }
 
         // GET: api/User/5
-        [EnableCors("BasicPolicy")]
+        [EnableCors("OpenPolicy")]
         [HttpGet("{id}", Name = "GetUser")]
         public List<User> Get(int id)
         {
@@ -35,7 +35,7 @@ namespace api.Controllers
         }
 
         // POST: api/User
-        [EnableCors("BasicPolicy")]
+        [EnableCors("OpenPolicy")]
         [HttpPost]
         public void Post([FromBody] User newUser)
         {
@@ -43,7 +43,7 @@ namespace api.Controllers
         }
 
         // PUT: api/User/5
-        [EnableCors("BasicPolicy")]
+        [EnableCors("OpenPolicy")]
         [HttpPut]
         public void Put([FromBody] User updatedUser)
         {
@@ -51,7 +51,7 @@ namespace api.Controllers
         }
 
         // DELETE: api/User/5
-        [EnableCors("BasicPolicy")]
+        [EnableCors("OpenPolicy")]
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

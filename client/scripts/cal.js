@@ -1,4 +1,7 @@
 const date = new Date();
+const baseUrl = "https://localhost:5001/api/Availability";
+var availabilityList = [];
+var availability = {};
 
 const renderCalendar = () => {
   var trueMonth = date.getMonth() + 1;
@@ -73,9 +76,9 @@ const renderCalendar = () => {
       i === currentDay &&
       date.getMonth() === currentMonth
     ) {
-      days += `<div class="today" id=${selectedDate} name=${selectedDate} onClick="selectDate(event)">${i}</div>`;
+      days += `<div class="today" id=${selectedDate} name=${selectedDate} onClick="selectDate(event)" method="get">${i}</div>`;
     } else {
-      days += `<div id=${selectedDate} name=${selectedDate} onClick="selectDate(event)">${i}</div>`;
+      days += `<div id=${selectedDate} name=${selectedDate} onClick="selectDate(event)" method="get">${i}</div>`;
     }
   }
 
@@ -103,13 +106,50 @@ function OnLoad() {
 function selectDate(e) {
   var element = e.target || e.srcElement;
   console.log(element.id);
-  showTimes(element.id);
+  GetDateAvailability(element.id);
 }
-function showTimes(selectedDate) {
-  let html = `<div class="box">`
-  html += `<div class="times">`
+function showTimes(json, selectedDate) {
+  availabilityList = json;
+  var allTimeslots = [];
+  availabilityList.forEach((availability) => {
+    var alreadyExists = false;
+    allTimeslots.forEach((timeslot) => {
+      if(availability.time == timeslot.time) {
+        alreadyExists = true;
+      }
+    });
+    if(!alreadyExists) {
+      allTimeslots.push(availability);
+    }
+  });
+  let html = `<div class="box">`;
+  html = `<div class="times">`
   html += `<div class="currentDate">`
   html += `<h1>Appointment Times<p>${selectedDate}`
-  html += `</p></h1></div></div></div>`;
+  html += `</p></h1></div></div>`;
+  html += `<div class="availabilities">`;
+  allTimeslots.forEach((timeslot) => {
+    html += `<div class="card col-md-2">`;
+    html += `<h4 class="card-title">`+timeslot.timeslot_Text+`</h4>`;
+    html += `<option value = ${timeslot.id, timeslot.timeslot_Id}></option>`;
+    html += `</div><br>`;
+  });
+  html += `</div>`;
   document.getElementById("box").innerHTML = html;
+}
+
+function GetDateAvailability(selectedDate) {
+  const selectedDateApiUrl = baseUrl + "/" + selectedDate;
+  console.log(selectedDateApiUrl);
+  var requestOptions = {
+    method: 'GET',
+    redirect: 'follow'
+  };
+  fetch(selectedDateApiUrl, requestOptions).then(function(response) {
+    return response.json();
+  }).then(function(json) {
+    showTimes(json, selectedDate);
+  }).catch(function(error) {
+      console.log(error);
+  });
 }

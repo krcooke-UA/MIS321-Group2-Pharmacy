@@ -47,9 +47,9 @@ namespace api
 
             app.UseHttpsRedirection();
 
-            app.UseCors("BasicPolicy");
-
             app.UseRouting();
+
+            app.UseCors("OpenPolicy");
 
             app.UseAuthorization();
 

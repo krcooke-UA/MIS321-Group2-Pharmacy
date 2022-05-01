@@ -24,13 +24,9 @@ namespace api.Database
         {
             //go to edit system enviroment variables on specific machine
             string server = "qao3ibsa7hhgecbv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
-
             string name = "u1z1fvkbnaae5ird";
-
             string port = "3306";
-
             string userName = "kep1psu5j8uzo01g";
-
             string password = "g05w7qk7ct1y4jhw";
 
             System.Console.WriteLine("got the database " + server);
@@ -58,6 +54,35 @@ namespace api.Database
             try
             {
                 using var cmd = new MySqlCommand(query, this.Conn);
+                using var rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    var temp = new ExpandoObject() as IDictionary<string, Object>;
+                    for (int i = 0; i < rdr.FieldCount; i++)
+                    {
+
+                        temp.TryAdd(rdr.GetName(i), rdr.GetValue(i) != DBNull.Value ? rdr.GetValue(i) : null);
+                    }
+
+                    results.Add((ExpandoObject)temp);
+                }
+            }
+            catch (Exception e)
+            {
+                System.Console.WriteLine("Select Query Error");
+                System.Console.WriteLine(e.Message);
+                throw new Exception();
+            }
+
+            return results;
+        }
+        public List<ExpandoObject> Select(string query, string id)
+        {
+            List<ExpandoObject> results = new();
+            try
+            {
+                using var cmd = new MySqlCommand(query, this.Conn);
+                cmd.Parameters.AddWithValue("@id", id);
                 using var rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {

@@ -23,15 +23,16 @@ html {
   width: 45rem;
   height: 52rem;
   background-color: #ffffff;
-  border: 1px solid #fdeaea;
   clip-path: inset(-40px -40px -40px 0px);
+  align-items: center;
+  justify-content: center;
 }
 
 .calendar {
   width: 45rem;
   height: 52rem;
   background-color: #ffffff;
-  border: 1px solid #fdeaea;
+  border: 1px solid #ffdada;
 }
 
 .month {
@@ -87,6 +88,19 @@ html {
 
 .times p {
   font-size: 1.6rem;
+}
+
+.availabilities {
+  width: 45rem;
+  height: 40rem;
+  align-items: center;
+  overflow: auto;
+  justify-content: space-between;
+  padding-top: 10px;
+  border: 1px solid #ffdada;
+  border-top: 3px solid #ffffff;
+  padding-left: 5rem;
+  padding-right: 5rem;
 }
 
 .weekdays {
@@ -146,4 +160,28 @@ html {
 .today {
   background-color: #ffd2d2;
   border: 0.2rem solid rgb(149, 21, 21);
+}
+
+.card {
+  width: 100%;
+  color: #ffffff;
+  background-color: #a90707;
+  border: 1px #ffffff;;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-shadow: 0 0.3rem 0.5rem rgba(140, 140, 140, 0.5);
+}
+.card-title {
+  padding-top: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+.card:hover {
+  background-color: #e27070;
+  color: #ffffff;
+  border: 0.2rem solid rgb(149, 21, 21);
+  cursor: pointer;
 }

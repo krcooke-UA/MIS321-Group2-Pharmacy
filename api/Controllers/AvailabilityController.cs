@@ -15,20 +15,21 @@ namespace api.Controllers
     [ApiController]
     public class AvailabilityController : ControllerBase
     {
+        IAvailabilityDataHandler availabilityHandler = new AvailabilityHandler();
         // GET: api/Availability
         [EnableCors("OpenPolicy")]
         [HttpGet()]
-        public IEnumerable<string> Get()
+        public int Get()
         {
-            return new string[] { "value1", "value2" };
+            return 0;
         }
 
         // GET: api/Availability/5
         [EnableCors("OpenPolicy")]
         [HttpGet("{id}", Name = "GetAvailability")]
-        public string Get(int id)
+        public List<Availability> Get(string id)
         {
-            return "value";
+            return availabilityHandler.SelectAvailabilities(id);
         }
 
         // POST: api/Availability

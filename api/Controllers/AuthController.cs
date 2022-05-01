@@ -19,7 +19,7 @@ namespace api.Controllers
         IAuthDataHandler dataHandler = new AuthDataHandler();  
 
         // POST: api/User
-        [EnableCors("BasicPolicy")]
+        [EnableCors("OpenPolicy")]
         [HttpPost("register")]
         public Register RegisterAuth ([FromBody] User newUser)
         {
@@ -27,7 +27,7 @@ namespace api.Controllers
         }
 
         // PUT: api/User/5
-        [EnableCors("BasicPolicy")]
+        [EnableCors("OpenPolicy")]
         [HttpPost("login")]
         public Login LoginAuth([FromBody] User newUser)
         {
@@ -35,14 +35,14 @@ namespace api.Controllers
             return dataHandler.LoginUser(newUser);
         }
 
-        [EnableCors("BasicPolicy")]
+        [EnableCors("OpenPolicy")]
         [HttpPost("logout")]
         public Login LogoutAuth([FromBody] AuthToken token)
         {
             return dataHandler.LogoutUser(token);
         }
 
-        [EnableCors("BasicPolicy")]
+        [EnableCors("OpenPolicy")]
         [HttpPost("validate-token")]
         public bool ValidateToken([FromBody] AuthToken token)
         {

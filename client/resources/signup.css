@@ -36,7 +36,11 @@ body {
 }
 .container {
   display: flex;
+<<<<<<< HEAD
   height: 500px;
+=======
+  height: 320px;
+>>>>>>> backend
   margin: 0 auto;
   width: 640px;
 }
@@ -47,12 +51,15 @@ body {
     width: 320px;
   }
 }
+<<<<<<< HEAD
 
 .nav-item {
   background-color: #990000;
   overflow: hidden;
 }
 
+=======
+>>>>>>> backend
 .left {
   background: white;
   height: calc(100% - 40px);
@@ -94,12 +101,15 @@ body {
     max-height: 400px;
   }
 }
+<<<<<<< HEAD
 
 img {
 	border-radius: 8px;
   padding-left: 3.5em;
 }
 
+=======
+>>>>>>> backend
 svg {
   position: absolute;
   width: 320px;
@@ -148,3 +158,17 @@ input::-moz-focus-inner {
   color: #d0d0d2;
 }
 
+<<<<<<< HEAD
+=======
+#home {
+    color: #c2c2c5;
+    margin-top: 10px;
+    transition: color 300ms;
+  }
+#home:focus {
+    color: #000000;
+}
+#home:active {
+    color: #d0d0d2;
+}
+>>>>>>> backend

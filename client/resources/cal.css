@@ -172,11 +172,9 @@ html {
   align-items: center;
   text-align: center;
   text-shadow: 0 0.3rem 0.5rem rgba(140, 140, 140, 0.5);
-}
-.card-title {
-  padding-top: 15px;
-  justify-content: center;
-  align-items: center;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  font-size: 1.6rem;
 }
 
 .card:hover {

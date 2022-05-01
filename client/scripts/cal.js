@@ -129,9 +129,12 @@ function showTimes(json, selectedDate) {
   html += `</p></h1></div></div>`;
   html += `<div class="availabilities">`;
   allTimeslots.forEach((timeslot) => {
-    html += `<div class="card col-md-2">`;
-    html += `<h4 class="card-title">`+timeslot.timeslot_Text+`</h4>`;
-    html += `<option value = ${timeslot.id, timeslot.timeslot_Id}></option>`;
+    var obj = {
+      "user_id":timeslot.user.id,
+      "availability_id":timeslot.id,
+      "timeslot_id":timeslot.timeslot_Id
+    }
+    html += `<div id=${obj.user_id}_${obj.availability_id}_${obj.timeslot_id} class="card col-md-2" onClick="makeAppointment(event)">${timeslot.timeslot_Text}`;
     html += `</div><br>`;
   });
   html += `</div>`;
@@ -152,4 +155,9 @@ function GetDateAvailability(selectedDate) {
   }).catch(function(error) {
       console.log(error);
   });
+}
+
+function makeAppointment(e) {
+  var element = e.target || e.srcElement;
+  console.log(element.id);
 }

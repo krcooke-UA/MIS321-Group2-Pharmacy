@@ -43,7 +43,7 @@ namespace api.Controllers
         }
 
         [EnableCors("OpenPolicy")]
-        [HttpPost("Validate-token")]
+        [HttpPost("Validate-Token")]
         public bool ValidateToken([FromBody] AuthToken token)
         {
             return dataHandler.IsTokenValid(token);

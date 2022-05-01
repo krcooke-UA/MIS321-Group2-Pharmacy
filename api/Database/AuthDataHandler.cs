@@ -47,6 +47,8 @@ namespace api.Database
                     Response = 200,
                     Message = "User is valid",
                     Email = thisUser.Email,
+                    Id = foundUser.Id.ToString(),
+                    Type = foundUser.Type_Text,
                     AuthToken = new AuthToken(thisGuid)
                 };
             }

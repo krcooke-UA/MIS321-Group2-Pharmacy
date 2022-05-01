@@ -68,7 +68,9 @@ namespace api.Database
         {
             List<User> myUser = new List<User>();
 
-            string stm = @"SELECT * from users WHERE user_email = '" + email + "' LIMIT 1";
+            string stm = @"SELECT user_id, user_email, user_password, user_type_text FROM users
+                        JOIN user_types USING(user_type_id)
+                        WHERE user_email = '" + email + "' LIMIT 1";
             db.Open();
             List<ExpandoObject> results = db.Select(stm);
 
@@ -79,7 +81,8 @@ namespace api.Database
                 {
                     Id = item.user_id,
                     Email = item.user_email,
-                    Password = item.user_password
+                    Password = item.user_password,
+                    Type_Text = item.user_type_text,
                 };
 
                 myUser.Add(temp);

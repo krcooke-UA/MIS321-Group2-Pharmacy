@@ -4,7 +4,6 @@ var myUser = {};
 function handleLogin() {
     console.log("Made it to post");
     const postUserApiUrl = baseUrl;
-    console.log(postUserApiUrl);
     const sendUser = {
         Email: document.getElementById("email").value,
         Password: document.getElementById("password").value
@@ -21,5 +20,20 @@ function handleLogin() {
     })
     .then((response)=>{
         myUser = sendUser;
+        return response.json();
+    }).then((json) => {
+        console.log(json);
+        localStorage.setItem("TidePharmacy-User", JSON.stringify(json.id));
+        localStorage.setItem("TidePharmacy-Token", JSON.stringify(json.authToken));
+        localStorage.setItem("TidePharmacy-Type", JSON.stringify(json.type))
+        window.location.href = "index.html";
+    }).catch(error => {
+        console.log(error);
     });
 }
+
+// gets string
+// localStorage.getItem("TidePharmacy-User")
+
+// routing
+// window.location.href = "index.html";

@@ -4,6 +4,7 @@ const validateLogin = async() => {
     const authToken = JSON.parse(localStorage.getItem("TidePharmacy-Token"));
     if(authToken == "" || authToken == null) {
         alert("Not logged in!");
+        window.location.href = "login.html";
         return;
     }
     try {

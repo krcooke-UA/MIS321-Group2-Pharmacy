@@ -1,4 +1,3 @@
-@charset "utf-8";
 * {
   margin: 0;
   padding: 0;
@@ -13,30 +12,40 @@ html {
 .container {
   width: 100%;
   height: 100vh;
-  background-color: #12121f;
-  color: #eee;
+  background-color: #ffffff;
+  color: rgb(60, 56, 56);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.box {
+  width: 45rem;
+  height: 52rem;
+  background-color: #ffffff;
+  clip-path: inset(-40px -40px -40px 0px);
+  align-items: center;
+  justify-content: center;
+}
+
 .calendar {
   width: 45rem;
   height: 52rem;
-  background-color: #222227;
-  box-shadow: 0 0.5rem 3rem rgba(0, 0, 0, 0.4);
+  background-color: #ffffff;
+  border: 1px solid #ffdada;
 }
 
 .month {
   width: 100%;
   height: 12rem;
-  background-color: #167e56;
+  color: #ffffff;
+  background-color: #a90707;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 2rem;
   text-align: center;
-  text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+  text-shadow: 0 0.3rem 0.5rem rgba(140, 140, 140, 0.5);
 }
 
 .month i {
@@ -56,6 +65,44 @@ html {
   font-size: 1.6rem;
 }
 
+.times {
+  width: 100%;
+  height: 12rem;
+  color: #ffffff;
+  background-color: #a90707;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5rem;
+  text-align: center;
+  text-shadow: 0 0.3rem 0.5rem rgba(140, 140, 140, 0.5);
+}
+
+.times h1 {
+  font-size: 3rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  margin-bottom: 1rem;
+}
+
+.times p {
+  font-size: 1.6rem;
+}
+
+.availabilities {
+  width: 45rem;
+  height: 40rem;
+  align-items: center;
+  overflow: auto;
+  justify-content: space-between;
+  padding-top: 10px;
+  border: 1px solid #ffdada;
+  border-top: 3px solid #ffffff;
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
 .weekdays {
   width: 100%;
   height: 5rem;
@@ -72,7 +119,7 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+  text-shadow: 0 0.3rem 0.5rem rgba(140, 140, 140, 0.5);
 }
 
 .days {
@@ -90,21 +137,49 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+  text-shadow: 0 0.3rem 0.5rem rgba(140, 140, 140, 0.5);
   transition: background-color 0.2s;
 }
 
-.days div:hover:not(.today) {
-  background-color: #262626;
-  border: 0.2rem solid #777;
+.days div:hover:not(.prev-month, .next-month, .prev-date) {
+  background-color: #e27070;
+  color: #ffffff;
+  border: 0.2rem solid rgb(149, 21, 21);
   cursor: pointer;
 }
 
-.prev-date,
-.next-date {
+.prev-month,
+.next-month {
+  opacity: 0.5;
+}
+
+.prev-date {
   opacity: 0.5;
 }
 
 .today {
-  background-color: #167e56;
+  background-color: #ffd2d2;
+  border: 0.2rem solid rgb(149, 21, 21);
+}
+
+.card {
+  width: 100%;
+  color: #ffffff;
+  background-color: #a90707;
+  border: 1px #ffffff;;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-shadow: 0 0.3rem 0.5rem rgba(140, 140, 140, 0.5);
+  padding-top: 7px;
+  padding-bottom: 7px;
+  font-size: 1.6rem;
+}
+
+.card:hover {
+  background-color: #e27070;
+  color: #ffffff;
+  border: 0.2rem solid rgb(149, 21, 21);
+  cursor: pointer;
 }

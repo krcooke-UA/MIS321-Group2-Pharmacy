@@ -1,0 +1,21 @@
+.polaroid {
+    height: auto;
+    transition: all 0.3s ease;
+    width: 29.3%;
+    background-color: white;
+    border-radius: 25px;
+    box-shadow: 2px 4px 8px 3px Gainsboro;
+    margin: 2%;
+    float: left;
+}
+
+@media screen and (max-width: 650px) {
+    .polaroid {
+        width: 96%;
+        margin: 2% auto;
+    }
+}
+
+.polaroid:hover {
+    box-shadow: 4px 8px 16px 6px Gainsboro;
+}

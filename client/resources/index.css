@@ -98,7 +98,7 @@ footer .footer_column p {
 	float: left;
 	text-align: center;
 	font-family: "Source Sans Pro";
-	color: #A5A5A5;
+	color: #9e1b32;
 	line-height: 24px;
 	padding-top: 10px;
 	padding-bottom: 10px;
@@ -307,3 +307,8 @@ html {
 	border-radius: 5px;
   }
 
+.hr-line{
+	color: darkred;
+	padding-bottom: 3px;
+	padding: 4px;
+}

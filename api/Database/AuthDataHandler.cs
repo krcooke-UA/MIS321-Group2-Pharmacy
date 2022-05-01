@@ -42,6 +42,7 @@ namespace api.Database
             if(hashedPasswordFromUserInput == foundUser.Password) {
                 Guid thisGuid = Guid.NewGuid();
                 allSessionTokens.Add(new AuthToken(thisGuid));
+                Console.WriteLine(thisUser.Email + " is valid");
                 return new Login() {
                     Response = 200,
                     Message = "User is valid",

@@ -76,7 +76,7 @@ const renderCalendar = () => {
       i === currentDay &&
       date.getMonth() === currentMonth
     ) {
-      days += `<div class="today" id=${selectedDate} name=${selectedDate} onClick="selectDate(event)" method="get">${i}</div>`;
+      days += `<div class="today">${i}</div>`;
     } else {
       days += `<div id=${selectedDate} name=${selectedDate} onClick="selectDate(event)" method="get">${i}</div>`;
     }

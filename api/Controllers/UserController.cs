@@ -44,7 +44,7 @@ namespace api.Controllers
 
         // PUT: api/User/5
         [EnableCors("OpenPolicy")]
-        [HttpPut]
+        [HttpPut("{id}")]
         public void Put([FromBody] User updatedUser)
         {
             dataHandler.Update(updatedUser);

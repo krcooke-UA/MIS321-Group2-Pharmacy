@@ -1,5 +1,5 @@
 function handleAccount() {
-  var userType = localStorage.getItem("TidePharmacy-Type").replace(/^"(.+(?="$))"$/, '$1');;
+  var userType = localStorage.getItem("TidePharmacy-Type").replace(/^"(.+(?="$))"$/, '$1');
   if(userType == "Customer") {
     window.location.href = "CustomerPortal.html";
   }

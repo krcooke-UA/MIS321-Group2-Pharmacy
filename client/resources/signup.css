@@ -74,14 +74,14 @@ body {
   color: #F1F1F2;
   position: relative;
   width: 50%;
-  height: 425px; 
+  height: 500px; 
 }
 @media (max-width: 800px) {
   .right {
     flex-shrink: 0;
     height: 150%;
     width: 100%;
-    max-height: 450px;
+    max-height: 500px;
   }
 }
 svg {

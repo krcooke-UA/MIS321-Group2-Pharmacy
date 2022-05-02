@@ -105,6 +105,18 @@ namespace api.Database
 
             return results;
         }
+        public int SelectAvailabilityDetail(string stm, int id, string datetime) {
+            int appointment_id = 0;
+            using var cmd = new MySqlCommand(stm, this.Conn);
+            cmd.Parameters.AddWithValue("@user_id", id);
+            cmd.Parameters.AddWithValue("@appointment_date", datetime);
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+            while(dataReader.Read()) {
+                appointment_id = int.Parse(dataReader["appointment_id"].ToString());
+            }
+            dataReader.Close();
+            return appointment_id;
+        }
 
 
         public void Insert(string query, Dictionary<string, object> values)

@@ -1,7 +1,10 @@
 const date = new Date();
-const baseUrl = "https://localhost:5001/api/Availability";
+const availabilityUrl = "https://localhost:5001/api/Availability";
+const appointmentUrl = "https://localhost:5001/api/Appointment";
+var userId = localStorage.getItem("TidePharmacy-User").replace(/^"(.+(?="$))"$/, '$1');
 var availabilityList = [];
 var availability = {};
+var viewingDate;
 
 const renderCalendar = () => {
   var trueMonth = date.getMonth() + 1;
@@ -103,22 +106,39 @@ function OnLoad() {
   renderCalendar();
 }
 
+
 function selectDate(e) {
   var element = e.target || e.srcElement;
   console.log(element.id);
+  viewingDate = element.id;
   GetDateAvailability(element.id);
 }
 function showTimes(json, selectedDate) {
+  var today = new Date();
+    mm = today.getMonth() + 1;
+    dd = today.getDate();
+    yyyy = today.getFullYear();
+    if (dd < 10) dd = '0' + dd;
+    if (mm < 10) mm = '0' + mm;
+  var date = yyyy + "-" + mm + "-" + dd
+  var time = today.getHours() + ":" + (today.getMinutes()+30) + ":" + today.getSeconds();
+
   availabilityList = json;
   var allTimeslots = [];
   availabilityList.forEach((availability) => {
     var alreadyExists = false;
+    var inThePast = false;
+    if(date == availability.date) {
+      if(time > availability.time) {
+        inThePast = true;
+      }
+    }
     allTimeslots.forEach((timeslot) => {
       if(availability.time == timeslot.time) {
         alreadyExists = true;
       }
     });
-    if(!alreadyExists) {
+    if(!alreadyExists && !inThePast) {
       allTimeslots.push(availability);
     }
   });
@@ -132,9 +152,11 @@ function showTimes(json, selectedDate) {
     var obj = {
       "user_id":timeslot.user.id,
       "availability_id":timeslot.id,
-      "timeslot_id":timeslot.timeslot_Id
+      "timeslot_id":timeslot.timeslot_Id,
+      "time":timeslot.time,
+      "date":timeslot.date
     }
-    html += `<div id=${obj.user_id}_${obj.availability_id}_${obj.timeslot_id} class="card col-md-2" onClick="makeAppointment(event)">${timeslot.timeslot_Text}`;
+    html += `<div id=${obj.user_id}_${obj.availability_id}_${obj.timeslot_id}_${obj.date}_${obj.time} class="card col-md-2" onClick="makeAppointment(event)">${timeslot.timeslot_Text}`;
     html += `</div><br>`;
   });
   html += `</div>`;
@@ -142,7 +164,7 @@ function showTimes(json, selectedDate) {
 }
 
 function GetDateAvailability(selectedDate) {
-  const selectedDateApiUrl = baseUrl + "/" + selectedDate;
+  const selectedDateApiUrl = availabilityUrl + "/" + selectedDate;
   console.log(selectedDateApiUrl);
   var requestOptions = {
     method: 'GET',
@@ -158,6 +180,35 @@ function GetDateAvailability(selectedDate) {
 }
 
 function makeAppointment(e) {
+  const selectedAppointmentApiUrl = appointmentUrl;
   var element = e.target || e.srcElement;
   console.log(element.id);
+
+  const myArray = element.id.split("_");
+  let admin_id = myArray[0];
+  let availability_id = myArray[1];
+  let timeslot_id = myArray[2];
+  let date = myArray[3];
+  let time = myArray[4];
+
+  const sendAppointment = {
+    User_Id: userId,
+    Date: date,
+    Time: time,
+    Availability_Id: availability_id,
+    Timeslot_Id: timeslot_id
+  }
+  fetch(selectedAppointmentApiUrl, {
+      method: "POST",
+      headers: {
+          "Accept": 'application/json',
+          "Content-Type": 'application/json',
+      },
+      body: JSON.stringify(sendAppointment)
+  }).then((response)=>{
+      alert("Appointment booked for: " + date + " at: " + time);
+      console.log(sendAppointment);
+      console.log(date);
+      GetDateAvailability(date);
+  });
 }

@@ -15,6 +15,8 @@ namespace api.Controllers
     [ApiController]
     public class AppointmentController : ControllerBase
     {
+        IAppointmentDataHandler appointmentHandler = new AppointmentDataHandler();
+
         // GET: api/Appointment
         [EnableCors("OpenPolicy")]
         [HttpGet()]
@@ -34,8 +36,9 @@ namespace api.Controllers
         // POST: api/Appointment
         [EnableCors("OpenPolicy")]
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Appointment value)
         {
+            appointmentHandler.MakeAppointment(value);
         }
 
         // PUT: api/Appointment/5

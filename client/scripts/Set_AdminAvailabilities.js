@@ -67,11 +67,12 @@ const renderCalendar = () => {
 
   for (let i = 1; i <= lastDay; i++) {
     mm = date.getMonth() + 1;
-    dd = i
+    dd = i;
     yyyy = date.getFullYear();
     if (dd < 10) dd = '0' + dd;
     if (mm < 10) mm = '0' + mm;
     var selectedDate = yyyy + "-" + mm + "-" + dd
+
     if (
       (date.getMonth() < currentMonth && date.getYear() == currentYear) ||
       (i < currentDay && date.getMonth() === currentMonth)
@@ -138,8 +139,8 @@ function showTimes(timeslotList, AvaDate) {
   html += `<h1>Manage Availability<p>${AvaDate}`
   html += `</p></h1></div></div>`;
   html += `<div class="availabilities">`;
-  html += `<select id="iFunction" name="nFunction" onchange="changeddl(this)">`;
-  html += `<option id="start" value="-1" selected=""></option>`;
+  html += `<select class="dropDown" id="iFunction" name="nFunction" onchange="changeddl(this)">`;
+  html += `<option class="dropDown" id="start" value="-1" selected=""></option>`;
   timeslotList.forEach((timeslot) => {
     var obj = {
       Id: timeslot.id,
@@ -148,7 +149,7 @@ function showTimes(timeslotList, AvaDate) {
       Time: timeslot.time,
       Text: timeslot.text
     }
-    html += `<option id=${obj.Id} value=${obj.Time}>${obj.Time}</option>`;
+    html += `<option class="dropDown" id=${obj.Id} value=${obj.Time}>${obj.Time}</option>`;
   });
   html += `</select>`;
   document.getElementById("box").innerHTML = html;
@@ -162,8 +163,8 @@ function changeddl(obj) {
   html += `<h1>Manage Availability<p>`
   html += `</p></h1></div></div>`;
   html += `<div class="availabilities">`;
-  html += `<select id="iFunction" name="nFunction" onchange="changeddl(this)">`;
-  html += `<option id="end" value="-1" selected="">${obj.options[obj.selectedIndex].value}</option>`;
+  html += `<select class="dropDown" id="iFunction" name="nFunction" onchange="changeddl(this)">`;
+  html += `<option class="dropDown" id="end" value="-1" selected="">${obj.options[obj.selectedIndex].value}</option>`;
   timeslotList.forEach((timeslot) => {
     var obj = {
       Id: timeslot.id,
@@ -172,7 +173,7 @@ function changeddl(obj) {
       Time: timeslot.time,
       Text: timeslot.text
     }
-    html += `<option id=${obj.Id} value=${obj.Time}>${obj.Time}</option>`;
+    html += `<option class="dropDown" id=${obj.Id} value=${obj.Time}>${obj.Time}</option>`;
   });
   html += `</select>`;
   var endTimes = [];
@@ -182,8 +183,8 @@ function changeddl(obj) {
       endTimes.push(timeslot);
     }
   });
-  html += `<select id="iOperation" name="nOperation" onchange="showOptions(this)">`;
-  html += `<option value="-1" selected=""></option>`;
+  html += `<select class="dropDown" id="iOperation" name="nOperation" onchange="showOptions(this)">`;
+  html += `<option class="dropDown" value="-1" selected=""></option>`;
   endTimes.forEach((timeslot) => {
       obj = {
         Id: timeslot.id,
@@ -193,7 +194,7 @@ function changeddl(obj) {
         Text: timeslot.text
       }
     endTimes.push(timeslot);
-    html += `<option id=${obj.Id} value=${obj.Text}>${obj.Time}</option>`;
+    html += `<option class="dropDown" id=${obj.Id} value=${obj.Text}>${obj.Time}</option>`;
   });
   html += `</select>`;
   html += `<br><br>`;

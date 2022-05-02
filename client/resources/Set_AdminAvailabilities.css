@@ -184,3 +184,10 @@ html {
   border: 0.2rem solid rgb(149, 21, 21);
   cursor: pointer;
 }
+
+.btn {
+  height: 30px;
+}
+.dropDown {
+  font-size: 15px;
+}

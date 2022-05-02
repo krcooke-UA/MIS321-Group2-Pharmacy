@@ -6,6 +6,7 @@ var timeslot = {};
 var AvaDate = "";
 var endTime = "";
 var startTime = "";
+var myDate;
 
 const renderCalendar = () => {
   var trueMonth = date.getMonth() + 1;
@@ -110,11 +111,12 @@ function OnLoad() {
 function selectDate(e) {
   var element = e.target || e.srcElement;
   console.log("Selected date: " + element.id);
+  myDate = element.id;
   GetDateTimeslots(element.id);
   document.getElementById("box").innerHTML = "";
 }
-function GetDateTimeslots(AvaDate) {
-  const selectedTimeslotApiUrl = timeslotUrl + "/" + AvaDate;
+function GetDateTimeslots(selectedDate) {
+  const selectedTimeslotApiUrl = timeslotUrl + "/" + selectedDate;
   console.log(selectedTimeslotApiUrl);
   var requestOptions = {
     method: 'GET',
@@ -124,7 +126,7 @@ function GetDateTimeslots(AvaDate) {
     return response.json();
   }).then(function(json) {
     timeslotList = json;
-    showTimes(timeslotList, AvaDate);
+    showTimes(timeslotList, selectedDate);
   }).catch(function(error) {
       console.log(error);
   });
@@ -157,7 +159,7 @@ function changeddl(obj) {
   let html = `<div class="box">`;
   html = `<div class="times">`
   html += `<div class="currentDate">`
-  html += `<h1>Manage Availability<p>${AvaDate}`
+  html += `<h1>Manage Availability<p>`
   html += `</p></h1></div></div>`;
   html += `<div class="availabilities">`;
   html += `<select id="iFunction" name="nFunction" onchange="changeddl(this)">`;
@@ -203,17 +205,26 @@ function showOptions(obj) {
   // console.log(startTime + " - " + endTime);
 }
 function handleSubmit() {
-  console.log(startTime + " - " + endTime);
-  //
+  console.log(myDate + ": " + startTime + " - " + endTime);
+
+  // const sendAvailability = {
+  //   User_Id: userId,
+  //   Date: date,
+  //   Time: time,
+  //   Availability_Id: availability_id,
+  //   Timeslot_Id: timeslot_id
+  // }
+  // fetch(selectedAppointmentApiUrl, {
+  //   method: "POST",
+  //   headers: {
+  //       "Accept": 'application/json',
+  //       "Content-Type": 'application/json',
+  //   },
+  //   body: JSON.stringify(sendAvailability)
+  // }).then((response)=>{
+  //     alert(date + " availability scheduled for: " + startTime + " - " + endTime);
+  //     console.log(sendAvailability);
+  //     console.log(date);
+  //     GetDateAvailability(date);
+  // });
 }
-// function showStartTime(selectedDate) {
-// }
-// function showEndTime(selectedDate) {
-// }
-// function selectStartAndEndTime(selectedDate) {
-//   SetDateAvailability(element.id);
-// }
-// function SetDateAvailability(json, e) {
-//   var element = e.target || e.srcElement;
-//   console.log(element.id);
-// }

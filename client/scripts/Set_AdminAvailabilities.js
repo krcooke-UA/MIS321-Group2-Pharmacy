@@ -4,6 +4,8 @@ var userId = localStorage.getItem("TidePharmacy-User").replace(/^"(.+(?="$))"$/,
 var timeslotList = [];
 var timeslot = {};
 var AvaDate = "";
+var endTime = "";
+var startTime = "";
 
 const renderCalendar = () => {
   var trueMonth = date.getMonth() + 1;
@@ -150,8 +152,8 @@ function showTimes(timeslotList, AvaDate) {
   document.getElementById("box").innerHTML = html;
 }
 function changeddl(obj) {
-  var startTime = obj.options[obj.selectedIndex].id;
-  console.log(startTime);
+  startTime = obj.options[obj.selectedIndex].id;
+  // console.log(startTime);
   let html = `<div class="box">`;
   html = `<div class="times">`
   html += `<div class="currentDate">`
@@ -196,8 +198,8 @@ function changeddl(obj) {
   document.getElementById("box").innerHTML = html;
 }
 function showOptions(obj) {
-  var endTime = obj.options[obj.selectedIndex].id;
-  console.log(endTime);
+  endTime = obj.options[obj.selectedIndex].id;
+  console.log(startTime + " - " + endTime);
 }
 // function showStartTime(selectedDate) {
 // }

@@ -9,7 +9,7 @@
 	<link href = "./resources/adminport.css" rel="stylesheet">
 	<link href = "./scripts/admin.js" rel="stylesheet">
 </head>
-<body>
+<body onload="handleOnLoad()">
 	<section class="py-5 my-5">
 		<div class="container">
 			<h1 class="mb-5">Customer Settings</h1>
@@ -37,39 +37,65 @@
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-								  	<label>First Name</label>
-								  	<input type="text" class="form-control" value="First Name">
+								  	<label for="FirstName">First Name</label>
+								  	<input type="text" class="form-control" id="FirstName" readonly>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-								  	<label>Last Name</label>
-								  	<input type="text" class="form-control" value="Last Name">
+								  	<label for="LastName">Last Name</label>
+								  	<input type="text" class="form-control" id="LastName" readonly>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-								  	<label>Email</label>
-								  	<input type="text" class="form-control" value="Email">
+								  	<label for="Email">Email</label>
+								  	<input type="text" class="form-control" id="Email" readonly>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-								  	<label>Phone number</label>
-								  	<input type="text" class="form-control" value="Cell Number">
+								  	<label for="CellNumber">Phone Number</label>
+								  	<input type="text" class="form-control" id="CellNumber" readonly>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+								  	<label for="DOB">Date of Birth</label>
+								  	<input type="text" class="form-control" id="DOB" readonly>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+								  	<label for="Gender">Gender</label>
+								  	<input type="text" class="form-control" id="Gender" readonly>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<h5>Address</h5>
+								<div class="form-group">
+								  	<label for="City">City</label>
+								  	<input type="text" class="form-control" id="City" readonly>
+									<label for="State">State</label>
+								  	<input type="text" class="form-control" id="State" readonly>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<h5><br></h5>
+								<div class="form-group">
+									<label for="Zipcode">Zipcode</label>
+								  	<input type="text" class="form-control" id="Zipcode" readonly>
+									<label for="Street">Street</label>
+								  	<input type="text" class="form-control" id="Street" readonly>
 								</div>
 							</div>
 						</div>
 						<div>
-							<button class="btn btn-primary">Update</button>
-							<button class="btn btn-light">Cancel</button>
-						</div>
-					</div>
-					<div class="tab-pane fade" id="application" role="tabpanel" aria-labelledby="application-tab">
-						<h3 class="mb-4">Application Settings</h3>
-						<div>
-							<button class="btn btn-primary">Update</button>
-							<button class="btn btn-light">Cancel</button>
+							<button id="editButton" class="btn btn-primary" onclick="handleEditClick()">Edit</button>
+							<button id="backButton" class="btn btn-light" onclick="window.location.href='home.html';">Back</button>
+							<span id="saveButton"></span>
 						</div>
 					</div>
 				</div>
@@ -80,6 +106,7 @@
 
 
 	<script src = "./scripts/validateUser.js"></script>
+	<script src="./scripts/CustomerPortal.js"></script>
 
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>

@@ -61,14 +61,14 @@ body {
   margin: auto;
 }
 
-.common{
-  text-align: center;
-  color: black
-  
-}
-
 hr {
   height:5px;
   border-width:0;
   background-color: #9e1b32;
+}
+
+.common{
+  text-align: center;
+  color: black
+  
 }

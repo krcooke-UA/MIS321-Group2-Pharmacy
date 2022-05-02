@@ -36,10 +36,10 @@ body {
 	margin:0px;
   }
   .colour-block {
-	background:#369A7E;
+	background:gray;
 	width:60%;
 	padding:7% 20% 10% 20%;
-	color:#fff;
+	color:#fff;   
   }
   .white-block {
 	background:#fff;

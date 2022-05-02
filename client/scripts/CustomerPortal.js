@@ -30,7 +30,8 @@ function putUser() {
         city: document.getElementById("City").value,
         state: document.getElementById("State").value,
         zipcode: parseInt(document.getElementById("Zipcode").value),
-        street: document.getElementById("Street").value
+        street: document.getElementById("Street").value,
+        email: myCustomer.email
     }
     fetch(putCustomerApiUrl, {
         method: "PUT",
@@ -42,8 +43,7 @@ function putUser() {
     })
     .then((response)=>{
         myCustomer = sendCustomer;
-        populateList();
-        blankFields();
+        populateForm(myCustomer);
     });
 }
 
@@ -74,7 +74,6 @@ function handleEditSave(userId) {
     showButtons();
 }
 function handleCancelSave() {
-    populateForm();
     makeReadOnly();
     showButtons();
 }

@@ -6,17 +6,42 @@ function handleOnLoad() {
     getUserInfo();
 }
 function getUserInfo() {
-    const putAdminApiUrl = adminUrl + "/" + userId
-    fetch(putAdminApiUrl).then(function(response) {
+    const getAdminApiUrl = adminUrl + "/" + userId
+    fetch(getAdminApiUrl).then(function(response) {
         return response.json();
     }).then(function(json) {
+        console.log(json);
         myAdmin = json[0];
+        console.log(myAdmin);
 		populateForm(myAdmin);
     }).catch(function(error) {
         console.log(error);
     });
 }
-function populateForm(json) {
+
+function putUser() {
+    const putAdminApiUrl = adminUrl + "/" + userId
+    const sendAdmin = {
+        id: parseInt(userId),
+        fname: document.getElementById("FirstName").value,
+        lname: document.getElementById("LastName").value,
+        email: myAdmin.email
+    }
+    fetch(putAdminApiUrl, {
+        method: "PUT",
+        headers: {
+            "Accept": 'application/json',
+            "Content-Type": 'application/json',
+        },
+        body: JSON.stringify(sendAdmin)
+    })
+    .then((response)=>{
+        myAdmin = sendAdmin;
+        populateForm(myAdmin);
+    });
+}
+
+function populateForm(myAdmin) {
     document.getElementById("FirstName").value = myAdmin.fname;
     document.getElementById("LastName").value = myAdmin.lname;
     document.getElementById("Email").value = myAdmin.email;
@@ -37,7 +62,6 @@ function handleEditSave(id) {
     showButtons();
 }
 function handleCancelSave() {
-    populateForm();
     makeReadOnly();
     showButtons();
 }

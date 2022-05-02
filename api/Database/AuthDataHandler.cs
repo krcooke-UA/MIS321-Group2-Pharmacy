@@ -110,17 +110,10 @@ namespace api.Database
                     Message = e.Message
                 };
             }
-            User foundUser;
-            foundUser = dataHandler.SelectOneByUsername(newUser.Email)[0];
-            Guid thisGuid = Guid.NewGuid();
-            allSessionTokens.Add(new AuthToken(thisGuid));
             return new Register() {
                 Response = 200,
-                Message = $"User {foundUser.Email} created",
-                Email = foundUser.Email,
-                Id = foundUser.Id,
-                Type = foundUser.Type_Text,
-                AuthToken = new AuthToken(thisGuid)
+                Message = $"User {newUser.Email} created",
+                Email = newUser.Email,
             };
         }
 

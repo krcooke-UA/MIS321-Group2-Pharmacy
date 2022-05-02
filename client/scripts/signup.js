@@ -20,16 +20,8 @@ function handleSignup() {
             "Content-Type": 'application/json',
         },
         body: JSON.stringify(sendUser)
-    }).then((response)=>{
+    })
+    .then((response)=>{
         myUser = sendUser;
-        return response.json();
-    }).then((json) => {
-        console.log(json);
-        localStorage.setItem("TidePharmacy-User", JSON.stringify(json.id));
-        localStorage.setItem("TidePharmacy-Token", JSON.stringify(json.authToken));
-        localStorage.setItem("TidePharmacy-Type", JSON.stringify(json.type))
-        window.location.href = "home.html";
-    }).catch(error => {
-        console.log(error);
     });
 }

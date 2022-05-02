@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using api.Models;
 using api.Interfaces;
 using api.Database;
-using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Cors; 
 
 namespace api.Controllers
 {

@@ -115,7 +115,7 @@ function selectDate(e) {
 }
 
 function GetDateAvailability(selectedDate) {
-  const selectedDateApiUrl = availabilityUrl + "/" + selectedDate;
+  const selectedDateApiUrl = availabilityUrl + "/GetAvailability/" + selectedDate;
   console.log(selectedDateApiUrl);
   var requestOptions = {
     method: 'GET',

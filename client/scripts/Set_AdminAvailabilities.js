@@ -1,8 +1,15 @@
 const date = new Date();
+
 const timeslotUrl = "https://localhost:5001/api/Timeslot";
 var userId = localStorage.getItem("TidePharmacy-User").replace(/^"(.+(?="$))"$/, '$1');
+const bookedUrl = "https://localhost:5001/api/Availability/GetListed/" + userId;
+
 var timeslotList = [];
 var timeslot = {};
+
+var bookedList = [];
+var booked = {};
+
 var AvaDate = "";
 var endTime = "";
 var startTime = "";
@@ -84,6 +91,11 @@ const renderCalendar = () => {
     ) {
       days += `<div class="today">${i}</div>`;
     } else {
+      bookedList.forEach((booked) => {
+        if(booked.date == selectedDate) {
+          days += `<div class="booked">${i}</div>`;
+        }
+      });
       days += `<div id=${selectedDate} name=${selectedDate} onClick="selectDate(event)" method="get">${i}</div>`;
     }
   }
@@ -106,7 +118,7 @@ document.querySelector(".next").addEventListener("click", () => {
 
 function OnLoad() {
   date.setMonth(date.getMonth());
-  renderCalendar();
+  getExistingAvailabilities();
 }
 
 function selectDate(e) {
@@ -228,4 +240,20 @@ function handleSubmit() {
   //     console.log(date);
   //     GetDateAvailability(date);
   // });
+  window.location.reload();
+}
+
+function getExistingAvailabilities() {
+  var requestOptions = {
+    method: 'GET',
+    redirect: 'follow'
+  };
+  fetch(bookedUrl, requestOptions).then(function(response) {
+    return response.json();
+  }).then(function(json) {
+    bookedList = json;
+    renderCalendar();
+  }).catch(function(error) {
+      console.log(error);
+  });
 }

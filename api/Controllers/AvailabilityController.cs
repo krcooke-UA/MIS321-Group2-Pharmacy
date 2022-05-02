@@ -18,16 +18,17 @@ namespace api.Controllers
         IAvailabilityDataHandler availabilityHandler = new AvailabilityHandler();
         // GET: api/Availability
         [EnableCors("OpenPolicy")]
-        [HttpGet()]
-        public int Get()
+        // [HttpGet("{id}", Name = "GetListed")]
+        [HttpGet("GetListed/{id}")]
+        public List<Availability> GetListed(string id)
         {
-            return 0;
+            return availabilityHandler.GetBookedAvailabilities(id);
         }
 
         // GET: api/Availability/5
         [EnableCors("OpenPolicy")]
-        [HttpGet("{id}", Name = "GetAvailability")]
-        public List<Availability> Get(string id)
+        [HttpGet("GetAvailability/{id}")]
+        public List<Availability> GetAvailability(string id)
         {
             return availabilityHandler.SelectAvailabilities(id);
         }

@@ -53,5 +53,36 @@ namespace api.Database
 
             return availabilities;
         }
+
+        public List<Availability> GetBookedAvailabilities(string id)
+        {
+            List<Availability> availabilities = new List<Availability>();
+
+            string stm = @"SELECT user_id, availability_id,
+	                        DATE_FORMAT(availability_startdate, '%Y-%m-%d') AS date
+                            FROM availability
+                            WHERE user_id = @id";
+            db.Open();
+            List<ExpandoObject> results = db.Select(stm, id);
+
+            foreach (dynamic item in results)
+            {
+                User tempUser = new User()
+                {
+                    Id = item.user_id
+                };
+                Availability tempAvailability = new Availability()
+                {
+                    user = tempUser,
+                    Id = item.availability_id,
+                    Date = item.date
+                };
+
+                availabilities.Add(tempAvailability);
+            }
+            db.Close();
+
+            return availabilities;
+        }
     }
 }

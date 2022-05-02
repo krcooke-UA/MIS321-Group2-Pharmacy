@@ -6,5 +6,6 @@ namespace api.Interfaces
     public interface IAvailabilityDataHandler
     {
          List<Availability> SelectAvailabilities(string id);
+         List<Availability> GetBookedAvailabilities(string id);
     }
 }

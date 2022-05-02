@@ -141,7 +141,7 @@ html {
   transition: background-color 0.2s;
 }
 
-.days div:hover:not(.prev-month, .next-month, .prev-date, .today) {
+.days div:hover:not(.prev-month, .next-month, .prev-date, .today, .booked) {
   background-color: #e27070;
   color: #ffffff;
   border: 0.2rem solid rgb(149, 21, 21);
@@ -154,6 +154,11 @@ html {
 }
 
 .prev-date {
+  opacity: 0.5;
+}
+
+.booked {
+  background-color: #ffd2d2;
   opacity: 0.5;
 }
 

@@ -113,6 +113,23 @@ function selectDate(e) {
   viewingDate = element.id;
   GetDateAvailability(element.id);
 }
+
+function GetDateAvailability(selectedDate) {
+  const selectedDateApiUrl = availabilityUrl + "/" + selectedDate;
+  console.log(selectedDateApiUrl);
+  var requestOptions = {
+    method: 'GET',
+    redirect: 'follow'
+  };
+  fetch(selectedDateApiUrl, requestOptions).then(function(response) {
+    return response.json();
+  }).then(function(json) {
+    showTimes(json, selectedDate);
+  }).catch(function(error) {
+      console.log(error);
+  });
+}
+
 function showTimes(json, selectedDate) {
   var today = new Date();
     mm = today.getMonth() + 1;
@@ -161,22 +178,6 @@ function showTimes(json, selectedDate) {
   });
   html += `</div>`;
   document.getElementById("box").innerHTML = html;
-}
-
-function GetDateAvailability(selectedDate) {
-  const selectedDateApiUrl = availabilityUrl + "/" + selectedDate;
-  console.log(selectedDateApiUrl);
-  var requestOptions = {
-    method: 'GET',
-    redirect: 'follow'
-  };
-  fetch(selectedDateApiUrl, requestOptions).then(function(response) {
-    return response.json();
-  }).then(function(json) {
-    showTimes(json, selectedDate);
-  }).catch(function(error) {
-      console.log(error);
-  });
 }
 
 function makeAppointment(e) {

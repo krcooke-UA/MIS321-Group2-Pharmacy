@@ -1,7 +1,9 @@
 const date = new Date();
-const baseUrl = "https://localhost:5001/api/Availability";
-var availabilityList = [];
-var availability = {};
+const timeslotUrl = "https://localhost:5001/api/Timeslot";
+var userId = localStorage.getItem("TidePharmacy-User").replace(/^"(.+(?="$))"$/, '$1');
+var timeslotList = [];
+var timeslot = {};
+var AvaDate = "";
 
 const renderCalendar = () => {
   var trueMonth = date.getMonth() + 1;
@@ -105,59 +107,106 @@ function OnLoad() {
 
 function selectDate(e) {
   var element = e.target || e.srcElement;
-  console.log(element.id);
-  GetDateAvailability(element.id);
+  console.log("Selected date: " + element.id);
+  GetDateTimeslots(element.id);
+  document.getElementById("box").innerHTML = "";
 }
-function showTimes(json, selectedDate) {
-  availabilityList = json;
-  var allTimeslots = [];
-  availabilityList.forEach((availability) => {
-    var alreadyExists = false;
-    allTimeslots.forEach((timeslot) => {
-      if(availability.time == timeslot.time) {
-        alreadyExists = true;
-      }
-    });
-    if(!alreadyExists) {
-      allTimeslots.push(availability);
-    }
-  });
-  let html = `<div class="box">`;
-  html = `<div class="times">`
-  html += `<div class="currentDate">`
-  html += `<h1>Appointment Times<p>${selectedDate}`
-  html += `</p></h1></div></div>`;
-  html += `<div class="availabilities">`;
-  allTimeslots.forEach((timeslot) => {
-    var obj = {
-      "user_id":timeslot.user.id,
-      "availability_id":timeslot.id,
-      "timeslot_id":timeslot.timeslot_Id
-    }
-    html += `<div id=${obj.user_id}_${obj.availability_id}_${obj.timeslot_id} class="card col-md-2" onClick="makeAppointment(event)">${timeslot.timeslot_Text}`;
-    html += `</div><br>`;
-  });
-  html += `</div>`;
-  document.getElementById("box").innerHTML = html;
-}
-
-function GetDateAvailability(selectedDate) {
-  const selectedDateApiUrl = baseUrl + "/" + selectedDate;
-  console.log(selectedDateApiUrl);
+function GetDateTimeslots(AvaDate) {
+  const selectedTimeslotApiUrl = timeslotUrl + "/" + AvaDate;
+  console.log(selectedTimeslotApiUrl);
   var requestOptions = {
     method: 'GET',
     redirect: 'follow'
   };
-  fetch(selectedDateApiUrl, requestOptions).then(function(response) {
+  fetch(selectedTimeslotApiUrl, requestOptions).then(function(response) {
     return response.json();
   }).then(function(json) {
-    showTimes(json, selectedDate);
+    timeslotList = json;
+    showTimes(timeslotList, AvaDate);
   }).catch(function(error) {
       console.log(error);
   });
 }
-
-function makeAppointment(e) {
-  var element = e.target || e.srcElement;
-  console.log(element.id);
+function showTimes(timeslotList, AvaDate) {
+  let html = `<div class="box">`;
+  html = `<div class="times">`
+  html += `<div class="currentDate">`
+  html += `<h1>Availability Start and End<p>${AvaDate}`
+  html += `</p></h1></div></div>`;
+  html += `<div class="availabilities">`;
+  html += `<select id="iFunction" name="nFunction" onchange="changeddl(this)">`;
+  html += `<option id="start" value="-1" selected=""></option>`;
+  timeslotList.forEach((timeslot) => {
+    var obj = {
+      Id: timeslot.id,
+      Datetime: timeslot.datetime,
+      Date: timeslot.date,
+      Time: timeslot.time,
+      Text: timeslot.text
+    }
+    html += `<option id=${obj.Id} value=${obj.Time}>${obj.Time}</option>`;
+  });
+  html += `</select>`;
+  document.getElementById("box").innerHTML = html;
 }
+function changeddl(obj) {
+  var startTime = obj.options[obj.selectedIndex].id;
+  console.log(startTime);
+  let html = `<div class="box">`;
+  html = `<div class="times">`
+  html += `<div class="currentDate">`
+  html += `<h1>Availability Start and End<p>${AvaDate}`
+  html += `</p></h1></div></div>`;
+  html += `<div class="availabilities">`;
+  html += `<select id="iFunction" name="nFunction" onchange="changeddl(this)">`;
+  html += `<option id="end" value="-1" selected="">${obj.options[obj.selectedIndex].value}</option>`;
+  timeslotList.forEach((timeslot) => {
+    var obj = {
+      Id: timeslot.id,
+      Datetime: timeslot.datetime,
+      Date: timeslot.date,
+      Time: timeslot.time,
+      Text: timeslot.text
+    }
+    html += `<option id=${obj.Id} value=${obj.Time}>${obj.Time}</option>`;
+  });
+  html += `</select>`;
+  var endTimes = [];
+  var maxTime = obj.options[obj.selectedIndex].id;
+  timeslotList.forEach((timeslot) => {
+    if(timeslot.id > maxTime) {
+      endTimes.push(timeslot);
+    }
+  });
+  html += `<select id="iOperation" name="nOperation" onchange="showOptions(this)">`;
+  html += `<option value="-1" selected=""></option>`;
+  endTimes.forEach((timeslot) => {
+      obj = {
+        Id: timeslot.id,
+        Datetime: timeslot.datetime,
+        Date: timeslot.date,
+        Time: timeslot.time,
+        Text: timeslot.text
+      }
+    endTimes.push(timeslot);
+    html += `<option id=${obj.Id} value=${obj.Text}>${obj.Time}</option>`;
+  });
+  html += `</select>`;
+  html += `</div>`;
+  document.getElementById("box").innerHTML = html;
+}
+function showOptions(obj) {
+  var endTime = obj.options[obj.selectedIndex].id;
+  console.log(endTime);
+}
+// function showStartTime(selectedDate) {
+// }
+// function showEndTime(selectedDate) {
+// }
+// function selectStartAndEndTime(selectedDate) {
+//   SetDateAvailability(element.id);
+// }
+// function SetDateAvailability(json, e) {
+//   var element = e.target || e.srcElement;
+//   console.log(element.id);
+// }

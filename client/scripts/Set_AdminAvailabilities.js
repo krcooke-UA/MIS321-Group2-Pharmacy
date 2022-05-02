@@ -133,7 +133,7 @@ function showTimes(timeslotList, AvaDate) {
   let html = `<div class="box">`;
   html = `<div class="times">`
   html += `<div class="currentDate">`
-  html += `<h1>Availability Start and End<p>${AvaDate}`
+  html += `<h1>Manage Availability<p>${AvaDate}`
   html += `</p></h1></div></div>`;
   html += `<div class="availabilities">`;
   html += `<select id="iFunction" name="nFunction" onchange="changeddl(this)">`;
@@ -157,7 +157,7 @@ function changeddl(obj) {
   let html = `<div class="box">`;
   html = `<div class="times">`
   html += `<div class="currentDate">`
-  html += `<h1>Availability Start and End<p>${AvaDate}`
+  html += `<h1>Manage Availability<p>${AvaDate}`
   html += `</p></h1></div></div>`;
   html += `<div class="availabilities">`;
   html += `<select id="iFunction" name="nFunction" onchange="changeddl(this)">`;
@@ -194,12 +194,17 @@ function changeddl(obj) {
     html += `<option id=${obj.Id} value=${obj.Text}>${obj.Time}</option>`;
   });
   html += `</select>`;
-  html += `</div>`;
+  html += `<br><br>`;
+  html += `<button id ="Submit" class ="btn btn-primary" onclick = "handleSubmit()">SUBMIT</button></div>`;
   document.getElementById("box").innerHTML = html;
 }
 function showOptions(obj) {
   endTime = obj.options[obj.selectedIndex].id;
+  // console.log(startTime + " - " + endTime);
+}
+function handleSubmit() {
   console.log(startTime + " - " + endTime);
+  //
 }
 // function showStartTime(selectedDate) {
 // }

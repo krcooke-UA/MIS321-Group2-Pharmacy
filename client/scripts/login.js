@@ -31,9 +31,3 @@ function handleLogin() {
         console.log(error);
     });
 }
-
-// gets string
-// localStorage.getItem("TidePharmacy-User")
-
-// routing
-// window.location.href = "index.html";

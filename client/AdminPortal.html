@@ -16,26 +16,19 @@
 			<div class="bg-white shadow rounded-lg d-block d-sm-flex">
 				<div class="profile-tab-nav border-right">
 					<div class="p-4">
-						<class="thumbnail_align"> <img src="C:\Users\hanna\OneDrive\Desktop\GroupProj321\MIS321-Group2-Pharmacy\client\resources\images\pharmlogo.png" alt="" width="200" height="200" class="thumbnail"/> </p>	
+						<class="thumbnail_align"> <img src="./resources/images/pharmlogo.png" alt="" width="200" height="200" class="thumbnail"/> </p>	
 					</div>
-					<button class="nav-link">
-						<a href="Get_AdminAvailabilities.html">
-							<i class="fa fa-home text-center mr-1"></i> 
-							Admin Availabilities
-						</a>
-					</button>
-					<button class="nav-link">
-						<a href="Set_AdminAvailabilities.html">
-							<i class="fa fa-user text-center mr-1"></i> 
-							Set Availability 
-						</a>
-					</button>
-					<button class="nav-link">
-						<a href="Get_AdminAppointments.html">
-							<i class="fa fa-user text-center mr-1"></i> 
-							View Appointments 
-						</a>
-					</button>
+					<table class=buttons>
+						<tr>
+							<td><button class="nav-link" onclick="OpenG_AAv()">Admin Availabilities</td></button>
+						</tr>
+						<tr>
+							<td><button class="nav-link" onclick="OpenS_AAv()">Set Availability</button></td>
+						</tr>
+						<tr>
+							<td><button class="nav-link" onclick="OpenG_AAp()">View Appointments</button></td>
+						</tr>
+					</table>
 				</div>
 				<div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
 					<div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
@@ -77,6 +70,12 @@
 			<link href='https://fonts.googleapis.com/css?family=Wire+One|Raleway:300' rel='stylesheet' type='text/css'>
 		</div>
 	</section>
+
+	<script>
+		function OpenG_AAv() {window.open("Get_AdminAvailabilities.html", "_blank");}
+		function OpenS_AAv() {window.open("Set_AdminAvailabilities.html", "_blank");}
+		function OpenG_AAp() {window.open("Get_AdminAppointments.html", "_blank");}
+	</script>
 
 
 	<script src = "./scripts/validateUser.js"></script>

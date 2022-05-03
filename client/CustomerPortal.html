@@ -16,20 +16,17 @@
 			<div class="bg-white shadow rounded-lg d-block d-sm-flex">
 				<div class="profile-tab-nav border-right">
 					<div class="p-4">
-						<class="thumbnail_align"> <img src="C:\Users\hanna\OneDrive\Desktop\GroupProj321\MIS321-Group2-Pharmacy\client\resources\images\pharmlogo.png" alt="" width="200" height="200" class="thumbnail"/> </p>	
+						<class="thumbnail_align"> <img src="./resources/images/pharmlogo.png" alt="" width="200" height="200" class="thumbnail"/> </p>	
 					</div>
-					<button class="nav-link">
-						<a href="Get_CustomerAppointments.html">
-							<i class="fa fa-home text-center mr-1"></i> 
-							My Appointments 
-						</a>
-					</button>
-					<button class="nav-link">
-						<a href="Set_CustomerAppointments.html">
-							<i class="fa fa-user text-center mr-1"></i> 
-							Make Appointment
-						</a>
-					</button>
+					<table class=buttons>
+						<tr>
+							<td><button class="nav-link" onclick="OpenG_CA()">My Appointments</button></td>
+						</tr>
+						<tr>
+							<td><button class="nav-link" onclick="OpenS_CA()">Make Appointment</button></td>
+						</tr>
+						
+					</table>
 				</div>
 				<div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
 					<div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
@@ -104,6 +101,10 @@
 		</div>
 	</section>
 
+	<script>
+		function OpenG_CA() {window.open("Get_CustomerAppointments.html", "_blank");}
+		function OpenS_CA() {window.open("Set_CustomerAppointments.html", "_blank");}
+	</script>
 
 	<script src = "./scripts/validateUser.js"></script>
 	<script src="./scripts/CustomerPortal.js"></script>

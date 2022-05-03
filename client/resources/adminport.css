@@ -21,7 +21,7 @@ body {
 }
 
 .nav-pills a.nav-link {
-	padding: 15px 20px;
+	padding: 10px 10px 10px 10px;
 	border-bottom: 1px solid #ddd;
 	border-radius: 0;
 	color: #111;
@@ -29,7 +29,28 @@ body {
 .nav-pills a.nav-link i {
 	width: 20px;
 }
-
+.nav-link {
+	grid-gap: 5px;
+	min-width:240px;
+	height:50px;
+	text-align:center;
+	line-height:1.1em;
+	font-size:1.1em;
+}
+.buttons {
+	grid-gap: 5px;
+	min-width:240px;
+	height:50px;
+	text-align:center;
+	line-height:1.1em;
+	font-size:1.1em;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+}
+.nav-link:hover {
+	background: rgb(198, 189, 189);
+}
 
 
 body {

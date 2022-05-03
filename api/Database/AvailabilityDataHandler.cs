@@ -23,8 +23,8 @@ namespace api.Database
             string stm = @"SELECT DISTINCT
 	                        CONCAT_WS(' ', user_fname, user_lname) AS full_name,
                             DATE_FORMAT(availability_startdate, '%Y-%m-%d') AS date,
-                            DATE_FORMAT(availability_startdate, '%T') AS start_time,
-                            DATE_FORMAT(availability_enddate, '%T') AS end_time
+                            TIME_FORMAT(DATE_FORMAT(availability_startdate, '%T'), '%r') AS start_time,
+                            TIME_FORMAT(DATE_FORMAT(availability_enddate, '%T'), '%r') AS end_time
                             FROM availability
                             JOIN users USING(user_id)
                             JOIN availability_detail USING(availability_id);";

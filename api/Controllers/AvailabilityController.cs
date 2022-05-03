@@ -15,13 +15,20 @@ namespace api.Controllers
     [ApiController]
     public class AvailabilityController : ControllerBase
     {
-        IAvailabilityDataHandler availabilityHandler = new AvailabilityDataHandler();
+        IAvailabilityDataHandler availabilityDataHandler = new AvailabilityDataHandler();
         // GET: api/Availability
+        [EnableCors("OpenPolicy")]
+        [HttpGet("GetAll")]
+        public List<Availability> GetAll()
+        {
+            return availabilityDataHandler.SelectAvailabilities();
+        }
+
         [EnableCors("OpenPolicy")]
         [HttpGet("GetListed/{id}")]
         public List<Availability> GetListed(string id)
         {
-            return availabilityHandler.GetBookedAvailabilities(id);
+            return availabilityDataHandler.GetBookedAvailabilities(id);
         }
 
         // GET: api/Availability/5
@@ -29,7 +36,7 @@ namespace api.Controllers
         [HttpGet("GetAvailability/{id}")]
         public List<Availability> GetAvailability(string id)
         {
-            return availabilityHandler.SelectAvailabilities(id);
+            return availabilityDataHandler.SelectAvailabilities(id);
         }
 
         // POST: api/Availability
@@ -37,7 +44,7 @@ namespace api.Controllers
         [HttpPost]
         public void Post([FromBody] Availability value)
         {
-            availabilityHandler.MakeAvailability(value);
+            availabilityDataHandler.MakeAvailability(value);
         }
 
         // PUT: api/Availability/5

@@ -12,5 +12,7 @@ namespace api.Models
         public string Type_Text {get; set;}
         public int Availability_Id {get; set;}
         public int Timeslot_Id {get; set;}
+        public string Notes {get;set;}
+        public string FullName {get;set;}
     }
 }

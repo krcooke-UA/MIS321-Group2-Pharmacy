@@ -16,6 +16,65 @@ namespace api.Database
         {
             db = new Database();
         }
+        public List<Appointment> GetAppointments(string id) {
+            List<Appointment> appointments = new List<Appointment>();
+
+            string stm = @"SELECT DISTINCT
+                            DATE_FORMAT(availability_startdate, '%Y-%m-%d') AS date,
+                            DATE_FORMAT(availability_startdate, '%T') AS time,
+                            customer_full_name
+                            FROM availability
+                            JOIN availability_detail USING(availability_id)
+                            JOIN appointments USING(appointment_id)
+                            JOIN
+                            (
+                                SELECT customer_id, customer_full_name FROM customers
+                            ) AS customers ON appointments.user_id = customers.customer_id
+                            WHERE availability.user_id = @id;";
+            db.Open();
+            List<ExpandoObject> results = db.Select(stm, id);
+
+            foreach (dynamic item in results)
+            {
+                Appointment tempAppointment = new Appointment()
+                {
+                    Date = item.date,
+                    Time = item.time,
+                    FullName = item.customer_full_name
+                };
+
+                appointments.Add(tempAppointment);
+            }
+            db.Close();
+
+            return appointments;
+
+        }
+        public List<Appointment> GetCustomerAppointments(string id) {
+            List<Appointment> appointments = new List<Appointment>();
+
+            string stm = @"SELECT
+                            DATE_FORMAT(appointment_date, '%Y-%m-%d') AS date,
+                            DATE_FORMAT(appointment_date, '%T') AS time
+                            FROM appointments
+                            WHERE user_id = @id;";
+            db.Open();
+            List<ExpandoObject> results = db.Select(stm, id);
+
+            foreach (dynamic item in results)
+            {
+                Appointment tempAppointment = new Appointment()
+                {
+                    Date = item.date,
+                    Time = item.time
+                };
+
+                appointments.Add(tempAppointment);
+            }
+            db.Close();
+
+            return appointments;
+        }
         public List<Appointment> SelectAppointments(string id)
         {
             List<Appointment> appointments = new List<Appointment>();

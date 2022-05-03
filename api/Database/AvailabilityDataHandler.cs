@@ -16,6 +16,37 @@ namespace api.Database
         {
             db = new Database();
         }
+        public List<Availability> SelectAvailabilities()
+        {
+            List<Availability> availabilities = new List<Availability>();
+
+            string stm = @"SELECT DISTINCT
+	                        CONCAT_WS(' ', user_fname, user_lname) AS full_name,
+                            DATE_FORMAT(availability_startdate, '%Y-%m-%d') AS date,
+                            DATE_FORMAT(availability_startdate, '%T') AS start_time,
+                            DATE_FORMAT(availability_enddate, '%T') AS end_time
+                            FROM availability
+                            JOIN users USING(user_id)
+                            JOIN availability_detail USING(availability_id);";
+            db.Open();
+            List<ExpandoObject> results = db.Select(stm);
+
+            foreach (dynamic item in results)
+            {
+                string time = item.start_time + " - " + item.end_time;
+                Availability tempAvailability = new Availability()
+                {
+                    FullName = item.full_name,
+                    Date = item.date,
+                    Time = time
+                };
+
+                availabilities.Add(tempAvailability);
+            }
+            db.Close();
+
+            return availabilities;
+        }
         public List<Availability> SelectAvailabilities(string id)
         {
             List<Availability> availabilities = new List<Availability>();

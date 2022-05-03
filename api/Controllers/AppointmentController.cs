@@ -15,22 +15,22 @@ namespace api.Controllers
     [ApiController]
     public class AppointmentController : ControllerBase
     {
-        IAppointmentDataHandler appointmentHandler = new AppointmentDataHandler();
+        IAppointmentDataHandler appointmentDataHandler = new AppointmentDataHandler();
 
         // GET: api/Appointment
         [EnableCors("OpenPolicy")]
-        [HttpGet()]
-        public IEnumerable<string> Get()
+        [HttpGet("GetCustomerAppointments/{id}")]
+        public List<Appointment> GetCustomer(string id)
         {
-            return new string[] { "value1", "value2" };
+            return appointmentDataHandler.GetCustomerAppointments(id);
         }
 
         // GET: api/Appointment/5
         [EnableCors("OpenPolicy")]
         [HttpGet("{id}", Name = "GetAppointments")]
-        public string Get(int id)
+        public List<Appointment> Get(string id)
         {
-            return "value";
+            return appointmentDataHandler.GetAppointments(id);
         }
 
         // POST: api/Appointment
@@ -38,7 +38,7 @@ namespace api.Controllers
         [HttpPost]
         public void Post([FromBody] Appointment value)
         {
-            appointmentHandler.MakeAppointment(value);
+            appointmentDataHandler.MakeAppointment(value);
         }
 
         // PUT: api/Appointment/5

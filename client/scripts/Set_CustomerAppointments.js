@@ -211,5 +211,6 @@ function makeAppointment(e) {
       console.log(sendAppointment);
       console.log(date);
       GetDateAvailability(date);
+      window.location.href = "Get_CustomerAppointments.html";
   });
 }

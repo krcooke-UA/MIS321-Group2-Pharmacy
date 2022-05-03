@@ -167,7 +167,7 @@ function showTimes(json, selectedDate) {
   html += `<div class="availabilities">`;
   allTimeslots.forEach((timeslot) => {
     var obj = {
-      "user_id":timeslot.user.id,
+      "user_id":timeslot.user_Id,
       "availability_id":timeslot.id,
       "timeslot_id":timeslot.timeslot_Id,
       "time":timeslot.time,

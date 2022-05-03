@@ -15,10 +15,9 @@ namespace api.Controllers
     [ApiController]
     public class AvailabilityController : ControllerBase
     {
-        IAvailabilityDataHandler availabilityHandler = new AvailabilityHandler();
+        IAvailabilityDataHandler availabilityHandler = new AvailabilityDataHandler();
         // GET: api/Availability
         [EnableCors("OpenPolicy")]
-        // [HttpGet("{id}", Name = "GetListed")]
         [HttpGet("GetListed/{id}")]
         public List<Availability> GetListed(string id)
         {
@@ -36,8 +35,9 @@ namespace api.Controllers
         // POST: api/Availability
         [EnableCors("OpenPolicy")]
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Availability value)
         {
+            availabilityHandler.MakeAvailability(value);
         }
 
         // PUT: api/Availability/5

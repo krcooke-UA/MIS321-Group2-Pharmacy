@@ -7,5 +7,6 @@ namespace api.Interfaces
     {
          List<Availability> SelectAvailabilities(string id);
          List<Availability> GetBookedAvailabilities(string id);
+         void MakeAvailability(Availability availability);
     }
 }

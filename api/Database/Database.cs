@@ -105,6 +105,67 @@ namespace api.Database
 
             return results;
         }
+        public List<ExpandoObject> Select(string query, string id1, string id2)
+        {
+            List<ExpandoObject> results = new();
+            try
+            {
+                using var cmd = new MySqlCommand(query, this.Conn);
+                cmd.Parameters.AddWithValue("@id1", id1);
+                cmd.Parameters.AddWithValue("@id2", id2);
+                using var rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    var temp = new ExpandoObject() as IDictionary<string, Object>;
+                    for (int i = 0; i < rdr.FieldCount; i++)
+                    {
+
+                        temp.TryAdd(rdr.GetName(i), rdr.GetValue(i) != DBNull.Value ? rdr.GetValue(i) : null);
+                    }
+
+                    results.Add((ExpandoObject)temp);
+                }
+            }
+            catch (Exception e)
+            {
+                System.Console.WriteLine("Select Query Error");
+                System.Console.WriteLine(e.Message);
+                throw new Exception();
+            }
+
+            return results;
+        }
+        public List<ExpandoObject> Select(string query, string id1, string id2, int id3)
+        {
+            List<ExpandoObject> results = new();
+            try
+            {
+                using var cmd = new MySqlCommand(query, this.Conn);
+                cmd.Parameters.AddWithValue("@id1", id1);
+                cmd.Parameters.AddWithValue("@id2", id2);
+                cmd.Parameters.AddWithValue("@id3", id3);
+                using var rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    var temp = new ExpandoObject() as IDictionary<string, Object>;
+                    for (int i = 0; i < rdr.FieldCount; i++)
+                    {
+
+                        temp.TryAdd(rdr.GetName(i), rdr.GetValue(i) != DBNull.Value ? rdr.GetValue(i) : null);
+                    }
+
+                    results.Add((ExpandoObject)temp);
+                }
+            }
+            catch (Exception e)
+            {
+                System.Console.WriteLine("Select Query Error");
+                System.Console.WriteLine(e.Message);
+                throw new Exception();
+            }
+
+            return results;
+        }
         public int SelectAvailabilityDetail(string stm, int id, string datetime) {
             int appointment_id = 0;
             using var cmd = new MySqlCommand(stm, this.Conn);

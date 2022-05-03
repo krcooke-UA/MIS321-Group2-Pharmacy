@@ -2,7 +2,7 @@ const date = new Date();
 
 const timeslotUrl = "https://localhost:5001/api/Timeslot";
 var userId = localStorage.getItem("TidePharmacy-User").replace(/^"(.+(?="$))"$/, '$1');
-const bookedUrl = "https://localhost:5001/api/Availability/GetListed/" + userId;
+const availabilityUrl = "https://localhost:5001/api/Availability";
 
 var timeslotList = [];
 var timeslot = {};
@@ -218,32 +218,35 @@ function showOptions(obj) {
   // console.log(startTime + " - " + endTime);
 }
 function handleSubmit() {
+  var postAvailabilityUrl = availabilityUrl;
   console.log(myDate + ": " + startTime + " - " + endTime);
+  console.log(postAvailabilityUrl);
 
-  // const sendAvailability = {
-  //   User_Id: userId,
-  //   Date: date,
-  //   Time: time,
-  //   Availability_Id: availability_id,
-  //   Timeslot_Id: timeslot_id
-  // }
-  // fetch(selectedAppointmentApiUrl, {
-  //   method: "POST",
-  //   headers: {
-  //       "Accept": 'application/json',
-  //       "Content-Type": 'application/json',
-  //   },
-  //   body: JSON.stringify(sendAvailability)
-  // }).then((response)=>{
-  //     alert(date + " availability scheduled for: " + startTime + " - " + endTime);
-  //     console.log(sendAvailability);
-  //     console.log(date);
-  //     GetDateAvailability(date);
-  // });
+  const sendAvailability = {
+    User_Id: userId,
+    Date: myDate,
+    StartTimeSlot: startTime,
+    EndTimeSlot: endTime
+  }
+  console.log(JSON.stringify(sendAvailability));
+  fetch(postAvailabilityUrl, {
+    method: "POST",
+    headers: {
+        "Accept": 'application/json',
+        "Content-Type": 'application/json',
+    },
+    body: JSON.stringify(sendAvailability)
+  }).then((response)=>{
+      alert(date + " availability scheduled for: " + startTime + " - " + endTime);
+      console.log(sendAvailability);
+      console.log(date);
+      GetDateAvailability(date);
+  });
   window.location.reload();
 }
 
 function getExistingAvailabilities() {
+  var bookedUrl = availabilityUrl + "/GetListed/" + userId;
   var requestOptions = {
     method: 'GET',
     redirect: 'follow'

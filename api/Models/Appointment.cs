@@ -14,5 +14,6 @@ namespace api.Models
         public int Timeslot_Id {get; set;}
         public string Notes {get;set;}
         public string FullName {get;set;}
+        public string Status {get;set;}
     }
 }

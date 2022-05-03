@@ -21,7 +21,7 @@ namespace api.Database
 
             string stm = @"SELECT DISTINCT
                             DATE_FORMAT(availability_startdate, '%Y-%m-%d') AS date,
-                            DATE_FORMAT(availability_startdate, '%T') AS time,
+                            TIME_FORMAT(DATE_FORMAT(availability_startdate, '%T'), '%r') AS time,
                             customer_full_name
                             FROM availability
                             JOIN availability_detail USING(availability_id)
@@ -55,7 +55,7 @@ namespace api.Database
 
             string stm = @"SELECT
                             DATE_FORMAT(appointment_date, '%Y-%m-%d') AS date,
-                            DATE_FORMAT(appointment_date, '%T') AS time
+                            TIME_FORMAT(DATE_FORMAT(appointment_date, '%T'), '%r') AS time
                             FROM appointments
                             WHERE user_id = @id;";
             db.Open();

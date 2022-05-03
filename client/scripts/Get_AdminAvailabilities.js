@@ -27,7 +27,15 @@ $(document).ready(function() {
             } },
         ],
         rowCallback: function(row, data, index){
-            if ( data.date <  currentDate && timeConversion(data.time) < currentTime) {
+            var date = data.date;
+            var time = timeConversion(data.time);
+
+            if(date == currentDate) {
+                $(row).find('td:eq(0)').css('background-color', '#e3faff');
+                $(row).find('td:eq(1)').css('background-color', '#e3faff');
+                $(row).find('td:eq(2)').css('background-color', '#e3faff');
+            }
+            if ( (date <  currentDate) || (date <=  currentDate && time < currentTime) ) {
                 $(row).find('td:eq(0)').css('background-color', '#e3e3e3');
                 $(row).find('td:eq(1)').css('background-color', '#e3e3e3');
                 $(row).find('td:eq(2)').css('background-color', '#e3e3e3');

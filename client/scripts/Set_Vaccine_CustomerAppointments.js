@@ -197,7 +197,8 @@ function makeAppointment(e) {
     Date: date,
     Time: time,
     Availability_Id: availability_id,
-    Timeslot_Id: timeslot_id
+    Timeslot_Id: timeslot_id,
+    Type_Id: 2
   }
   fetch(selectedAppointmentApiUrl, {
       method: "POST",

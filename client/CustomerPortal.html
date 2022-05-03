@@ -23,7 +23,10 @@
 							<td><button class="nav-link" onclick="OpenG_CA()">My Appointments</button></td>
 						</tr>
 						<tr>
-							<td><button class="nav-link" onclick="OpenS_CA()">Make Appointment</button></td>
+							<td><button class="nav-link" onclick="OpenS_V()">Schedule Vaccination</button></td>
+						</tr>
+						<tr>
+							<td><button class="nav-link" onclick="OpenS_C()">Schedule Checkup</button></td>
 						</tr>
 						
 					</table>
@@ -103,7 +106,8 @@
 
 	<script>
 		function OpenG_CA() {window.open("Get_CustomerAppointments.html", "_blank");}
-		function OpenS_CA() {window.open("Set_CustomerAppointments.html", "_blank");}
+		function OpenS_V() {window.open("Set_Vaccine_CustomerAppointments.html", "_blank");}
+		function OpenS_C() {window.open("Set_Checkup_CustomerAppointments.html", "_blank");}
 	</script>
 
 	<script src = "./scripts/validateUser.js"></script>

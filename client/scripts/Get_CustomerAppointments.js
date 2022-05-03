@@ -6,7 +6,8 @@ var editor = new $.fn.dataTable.Editor( {
     table: '#myTable',
     fields: [
         { label: 'Appointment Date',  name: 'date'  },
-        { label: 'Appointment Time',  name: 'time'  }
+        { label: 'Appointment Time',  name: 'time'  },
+        { label: 'Appointment Type', name: 'type_Text'}
     ]
 } );
 
@@ -23,14 +24,27 @@ $(document).ready(function() {
             } },
             { data: "time", render: function(data) {
                 return `<span style="display: flex; flex-flow: row nowrap; justify-content: center;">${data}</span>`;
+            } },
+            { data: "type_Text", render: function(data) {
+                return `<span style="display: flex; flex-flow: row nowrap; justify-content: center;">${data}</span>`;
             } }
         ],
         rowCallback: function(row, data, index){
-            if ( data.date <  currentDate && timeConversion(data.time) < currentTime) {
+            var date = data.date;
+            var time = timeConversion(data.time);
+
+            if(date == currentDate) {
+                $(row).find('td:eq(0)').css('background-color', '#e3faff');
+                $(row).find('td:eq(1)').css('background-color', '#e3faff');
+                $(row).find('td:eq(2)').css('background-color', '#e3faff');
+            }
+            if ( (date < currentDate) || (date <= currentDate && time < currentTime) ) {
                 $(row).find('td:eq(0)').css('background-color', '#e3e3e3');
                 $(row).find('td:eq(1)').css('background-color', '#e3e3e3');
+                $(row).find('td:eq(2)').css('background-color', '#e3e3e3');
                 $(row).find('td:eq(0)').css('opacity', '0.7');
                 $(row).find('td:eq(1)').css('opacity', '0.7');
+                $(row).find('td:eq(2)').css('opacity', '0.7');
             }
         },
         select: true
@@ -71,15 +85,14 @@ function getDate() {
     return currentYear;
 }
 function timeConversion(s) {
-    var word = s.split(" ")[3] + " " + s.split(" ")[4];
-    var time = word.toLowerCase().split(':');
+    var time = s.toLowerCase().split(':');
     var hours = parseInt(time[0]);
     var _ampm = time[2];
     if (_ampm.indexOf('am') != -1 && hours == 12) {
-      time[0] = '00';
+        time[0] = '00';
     }
     if (_ampm.indexOf('pm')  != -1 && hours < 12) {
-      time[0] = hours + 12;
+        time[0] = hours + 12;
     }
     return time.join(':').replace(/(am|pm)/, '');
 }

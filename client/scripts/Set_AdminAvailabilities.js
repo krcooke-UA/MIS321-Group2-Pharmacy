@@ -73,6 +73,7 @@ const renderCalendar = () => {
   }
 
   for (let i = 1; i <= lastDay; i++) {
+    var Datebooked = false;
     mm = date.getMonth() + 1;
     dd = i;
     yyyy = date.getFullYear();
@@ -80,23 +81,24 @@ const renderCalendar = () => {
     if (mm < 10) mm = '0' + mm;
     var selectedDate = yyyy + "-" + mm + "-" + dd
 
-    if (
-      (date.getMonth() < currentMonth && date.getYear() == currentYear) ||
-      (i < currentDay && date.getMonth() === currentMonth)
-    ) {
+    if ((date.getMonth() < currentMonth && date.getYear() == currentYear) || (i < currentDay && date.getMonth() === currentMonth)) {
       days += `<div class="prev-date">${i}</div>`;
-    } else if (
-      i === currentDay &&
-      date.getMonth() === currentMonth
-    ) {
+    }
+    else if (i === currentDay && date.getMonth() === currentMonth) {
       days += `<div class="today">${i}</div>`;
-    } else {
+    }
+    else {
       bookedList.forEach((booked) => {
         if(booked.date == selectedDate) {
-          days += `<div class="booked">${i}</div>`;
+          Datebooked = true;
         }
       });
-      days += `<div id=${selectedDate} name=${selectedDate} onClick="selectDate(event)" method="get">${i}</div>`;
+      if(Datebooked) {
+        days += `<div class="booked">${i}</div>`;
+      }
+      else {
+        days += `<div id=${selectedDate} name=${selectedDate} onClick="selectDate(event)" method="get">${i}</div>`;
+      }
     }
   }
 
@@ -243,6 +245,7 @@ function handleSubmit() {
       GetDateAvailability(date);
   });
   window.location.reload();
+  getExistingAvailabilities().then(window.location.reload())
 }
 
 function getExistingAvailabilities() {

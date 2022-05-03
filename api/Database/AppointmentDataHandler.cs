@@ -20,12 +20,14 @@ namespace api.Database
             List<Appointment> appointments = new List<Appointment>();
 
             string stm = @"SELECT DISTINCT
-                            DATE_FORMAT(availability_startdate, '%Y-%m-%d') AS date,
-                            TIME_FORMAT(DATE_FORMAT(availability_startdate, '%T'), '%r') AS time,
-                            customer_full_name
+                            DATE_FORMAT(appointment_date, '%Y-%m-%d') AS date,
+                            TIME_FORMAT(DATE_FORMAT(appointment_date, '%T'), '%r') AS time,
+                            customer_full_name,
+                            appointment_type_text
                             FROM availability
                             JOIN availability_detail USING(availability_id)
                             JOIN appointments USING(appointment_id)
+                            JOIN appointment_types USING(appointment_type_id)
                             JOIN
                             (
                                 SELECT customer_id, customer_full_name FROM customers
@@ -40,7 +42,8 @@ namespace api.Database
                 {
                     Date = item.date,
                     Time = item.time,
-                    FullName = item.customer_full_name
+                    FullName = item.customer_full_name,
+                    Type_Text = item.appointment_type_text
                 };
 
                 appointments.Add(tempAppointment);
@@ -55,8 +58,9 @@ namespace api.Database
 
             string stm = @"SELECT
                             DATE_FORMAT(appointment_date, '%Y-%m-%d') AS date,
-                            TIME_FORMAT(DATE_FORMAT(appointment_date, '%T'), '%r') AS time
-                            FROM appointments
+                            TIME_FORMAT(DATE_FORMAT(appointment_date, '%T'), '%r') AS time,
+                            appointment_type_text
+                            FROM appointments JOIN appointment_types USING(appointment_type_id)
                             WHERE user_id = @id;";
             db.Open();
             List<ExpandoObject> results = db.Select(stm, id);
@@ -66,7 +70,8 @@ namespace api.Database
                 Appointment tempAppointment = new Appointment()
                 {
                     Date = item.date,
-                    Time = item.time
+                    Time = item.time,
+                    Type_Text = item.appointment_type_text
                 };
 
                 appointments.Add(tempAppointment);
@@ -109,9 +114,9 @@ namespace api.Database
         public void MakeAppointment(Appointment appointment) {
 
             string stm1 = @"INSERT INTO appointments
-                (user_id, appointment_date)
+                (user_id, appointment_date, appointment_type_id)
                 VALUES
-                (@user_id, @appointment_date)";
+                (@user_id, @appointment_date, @appointment_type_id)";
 
             db.Open();
             var values1 = GetValues(appointment);
@@ -136,7 +141,8 @@ namespace api.Database
             var datetime = appointment.Date + " " + appointment.Time;
             var values = new Dictionary<string, object>(){
                 {"@user_id", appointment.User_Id},
-                {"@appointment_date", datetime}
+                {"@appointment_date", datetime},
+                {"@appointment_type_id", appointment.Type_Id}
             };
 
             return values;

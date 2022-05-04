@@ -16,13 +16,6 @@ namespace api.Controllers
     public class TimeslotController : ControllerBase
     {
         ITimeslotDataHandler timeslotDataHandler = new TimeslotDataHandler();
-        // GET: api/Timeslot
-        [EnableCors("OpenPolicy")]
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
 
         // GET: api/Timeslot/Date
         [EnableCors("OpenPolicy")]
@@ -30,6 +23,15 @@ namespace api.Controllers
         public List<Timeslot> Get(string id)
         {
             return timeslotDataHandler.SelectTimeslots(id);
+        }
+
+
+        // GET: api/Timeslot
+        [EnableCors("OpenPolicy")]
+        [HttpGet]
+        public IEnumerable<string> Get()
+        {
+            return new string[] { "value1", "value2" };
         }
 
         // POST: api/Timeslot

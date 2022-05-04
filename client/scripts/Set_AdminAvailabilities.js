@@ -170,7 +170,6 @@ function showTimes(timeslotList, AvaDate) {
 }
 function changeddl(obj) {
   startTime = obj.options[obj.selectedIndex].id;
-  // console.log(startTime);
   let html = `<div class="box">`;
   html = `<div class="times">`
   html += `<div class="currentDate">`

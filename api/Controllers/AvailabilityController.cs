@@ -47,6 +47,8 @@ namespace api.Controllers
             availabilityDataHandler.MakeAvailability(value);
         }
 
+
+
         // PUT: api/Availability/5
         [EnableCors("OpenPolicy")]
         [HttpPut("{id}")]

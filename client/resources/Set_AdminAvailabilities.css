@@ -192,7 +192,22 @@ html {
 
 .btn {
   height: 30px;
+  margin-left: 12px;
+  font-size: 15px;
+  color: rgb(149, 21, 21);
+  background-color: #ffd2d2;
+  border: 0.2rem solid rgb(149, 21, 21);
+}
+.btn:hover {
+  background-color: #e27070;
+  border: 0.2rem solid rgb(149, 21, 21);
+  color: #ffffff;
 }
 .dropDown {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   font-size: 15px;
+  min-width: 150px;
+  margin-left: 10px;
 }
